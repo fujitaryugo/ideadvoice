@@ -1,0 +1,72 @@
+
+<h1>Clients#show</h1>
+<p>Find me in app/views/clients/show.html.erb</p>
+<div class="container">
+<div>
+<!-- タブ部分 -->
+<ul id="myTab" class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">プロフィール</a>
+  </li>
+  <li class="nav-item">
+    <a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">依頼投稿</a>
+  </li>
+  <li class="nav-item">
+    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">コンタクト</a>
+  </li>
+</ul>
+
+<!-- パネル部分 -->
+<div id="myTabContent" class="tab-content mt-3">
+  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
+  		<div class="col-xs-5 col-xs-offset-2">
+	 	<h3>client info</h3>
+
+		 <%= form_for(@client) do |f| %>
+		  <label>画像</label>
+		  <%= attachment_image_tag @client,:client_image, :fill,50,50, fallback:"" %><br>
+
+		  <%= f.attachment_field :client_image %>
+
+		  <div class="form-group">
+		    <label>団体名</label>
+		    <%= f.text_field :group_name %>
+		  </div>
+		  <div class="form-group">
+		    <label>担当者姓</label>
+		    <%= f.text_field :last_name %>
+		  </div>
+		  <div class="form-group">
+		    <label>担当者名</label>
+		    <%= f.text_field :first_name %>
+		  </div>
+		  <div class="form-group">
+		    <label>電話番号</label>
+		    <%= f.text_field :phone_number %>
+		  </div>
+		  <div class="form-group">
+		    <label>メールアドレス</label>
+		    <%= f.text_field :email %>
+		  </div>
+		  <div class="form-group">
+		    <label>団体URL</label>
+		    <%= f.text_field :client_url %>
+		  </div>
+		  <div class="form-group">
+		    <label>紹介文</label>
+		    <%= f.text_field :introduction %>
+		  </div>
+		  <div class="col-xs-12 btn btn-default">
+		  	<%= f.submit '更新'%>
+		  </div>
+		 <% end %>
+	 	</div>
+  </div>
+  <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
+  	<%= render 'orders/new', model: @order %>
+  </div>
+  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab">コンタクトの文章です。...</div>
+</div>
+</div>
+</div>
+

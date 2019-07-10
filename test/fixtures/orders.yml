@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_title: MyString
+  order_text: MyText
+  order_image_id: MyString
+  deadline: 2019-07-10
+  reward_image_id: MyText
+  reward_content: MyText
+  client_id: 1
+
+two:
+  order_title: MyString
+  order_text: MyText
+  order_image_id: MyString
+  deadline: 2019-07-10
+  reward_image_id: MyText
+  reward_content: MyText
+  client_id: 1
