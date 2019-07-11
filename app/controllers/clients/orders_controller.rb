@@ -1,12 +1,13 @@
-class OrdersController < ApplicationController
+class Clients::OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.client_id = current_client.id
 		@order.save
-		redirect_to client_path(@client.id)
+		redirect_to clients_client_path(params[:client_id])
 	end
 
 	def show
+		@order = Order.find(params[:id])
 	end
 
 	def index

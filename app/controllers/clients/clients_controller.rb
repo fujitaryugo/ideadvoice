@@ -1,4 +1,4 @@
-class ClientsController < ApplicationController
+class Clients::ClientsController < ApplicationController
 	before_action :authenticate_client!
   def show
   	@client = Client.find(params[:id])

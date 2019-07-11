@@ -1,0 +1,28 @@
+<div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>イメージ</th>
+				<th>タイトル</th>
+				<th>内容</th>
+				<th>締切日</th>
+				<th>報酬画像</th>
+				<th>報酬内容</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @orders.each do |order| %>
+			<tr>
+				<td><%= order.id %></td>
+				<td><%= attachment_image_tag order, :order_image, :fill,40,40 %></td>
+				<td><%= order.order_title %></td>
+				<td><%= order.order_text %></td>
+				<td><%= order.deadline %></td>
+				<td><%= attachment_image_tag order, :reward_image, :fill,40,40  %></td>
+				<td><%= order.reward_content %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
