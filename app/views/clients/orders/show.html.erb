@@ -25,7 +25,23 @@
 			</div>
 		  </div>
 		  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab">
-		  	一覧
+			<% @ideas.each do |idea| %>
+			<div class="col-xl-12 ">
+				<div class="card" style="margin:1% auto;">
+					<%= idea.id %>
+
+					<div class="card-body">
+						<div class="mx-auto">
+						<%= attachment_image_tag @user, :user_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'100x100',style:"border-radius: 50%;" %>
+						<%= idea.user.name %>
+						</div>
+						<div class="card-title"><%= idea.idea_title %></div>
+						<div class="card-text" style="margin-bottom:2%;"><%= idea.idea_text %></div>
+						<div>投稿日<%= idea.created_at.strftime('%Y年%m月%d日') %></div>
+					</div>
+			    </div>
+			</div>
+			<% end %>
 		  </div>
 	</div>
 </div>

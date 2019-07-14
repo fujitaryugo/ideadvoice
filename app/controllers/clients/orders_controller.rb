@@ -1,4 +1,5 @@
 class Clients::OrdersController < ApplicationController
+	before_action :authenticate_client!
 	def create
 		@order = Order.new(order_params)
 		@order.client_id = current_client.id
@@ -8,6 +9,7 @@ class Clients::OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
+		@ideas = @order.ideas
 	end
 
 	def index

@@ -2,29 +2,66 @@
 <p>Find me in app/views/users/show.html.erb</p>
 <div class="container">
 	<div class="row">
-		<div class="col-xl-5">
-			<%= attachment_image_tag @user, :user_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'100x100' %>
-			<%= form_for (@user)do |f| %>
-			<%= f.attachment_field :user_image %><br>
-			<%= f.text_field :name %><br>
-			<%= f.select :sex, User.sexes.keys.to_a, {}  %><br>
-			<%= f.select :age, User.ages.keys.to_a, {} %><br>
-			<%= f.select :location, User.locations.keys.to_a, {} %><br>
-			<%= f.select :job, User.jobs.keys.to_a, {} %><br>
-			<%= f.submit %>
-			<% end %>
+		<div class="col-xl-3 col-xl-1">
+			<%= attachment_image_tag @user, :user_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'100x100',style:"border-radius: 50%;" %>
 		</div>
 		<div class="col-xl-5">
-			<tabel>
-				<tbody></tbody>
-			</tabel>
+			<strong><%= @user.name %></strong>
+			<table>
+
+				<tbody>
+					<tr>
+						<td><%= @user.sex %>/</td>
+						<td><%= @user.age %>/</td>
+						<td><%= @user.location %>/</td>
+						<td><%= @user.job %></td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">編集</button>
+		</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">モーダルのタイトル</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        			<%= form_for (@user)do |f| %>
+								<%= f.attachment_field :user_image %><br>
+								<%= f.text_field :name %><br>
+								<%= f.select :sex, User.sexes.keys.to_a, {}  %><br>
+								<%= f.select :age, User.ages.keys.to_a, {} %><br>
+								<%= f.select :location, User.locations.keys.to_a, {} %><br>
+								<%= f.select :job, User.jobs.keys.to_a, {} %><br>
+								<%= f.email_field :email %>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+			        <%= f.submit "編集",class: "btn btn-primary" %>
+			        <% end %>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+
+	</div>
+	<div class="row">
 			<% @ideas.each do |idea| %>
-			<div>
-				<%= idea.id %>
-				<strong class="text-center"><%= idea.idea_text %></strong><br>
-				<%= idea.idea_title %><br>
-		    </div>
+			<div class="col-xl-12 ">
+				<div class="card" style="margin:1% auto;">
+					<%= idea.id %>
+					<div class="card-body">
+						<strong class="card-title"><%= idea.idea_title %></strong>
+						<div class="card-text" style="margin-bottom:2%;"><%= idea.idea_text %></div>
+						<div>投稿日<%= idea.created_at.strftime('%Y年%m月%d日') %></div>
+					</div>
+			    </div>
+			</div>
 			<% end %>
-		</div>
 	</div>
 </div>

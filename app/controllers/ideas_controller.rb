@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+	before_action :authenticate_user!
 	def create
 		@order = Order.find(params[:order_id])
 		@idea = Idea.new(idea_params)
