@@ -9,7 +9,7 @@ class Clients::ClientsController < ApplicationController
   def update
   	@client = Client.find(params[:id])
   	@client.update(client_params)
-  	redirect_to client_path(@client.id)
+  	redirect_to clients_client_path(@client.id)
   end
 
   private

@@ -1,0 +1,32 @@
+
+<div class="container">
+
+	<!--タブ-->
+	<ul id="myTab" class="nav nav-tabs" role="tablist">
+	  <li class="nav-item">
+	    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">依頼</a>
+	  </li>
+	  <li class="nav-item">
+	    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">アイデア一覧</a>
+	  </li>
+	</ul>
+	<!--パネル-->
+	<div id="myTabContent" class="tab-content mt-3">
+		  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
+			<div class="container">
+	  		<div class="row">
+					<%= attachment_image_tag @order, :order_image, :fill,200,200, fallback:"no_image.jpeg", size:'200x200' %>
+					<%= @order.order_title %>
+					<%= @order.order_text %>
+					<%= @order.deadline %>
+					<%= attachment_image_tag @order, :reward_image, size:'200x200' %>
+					<%= @order.reward_content %>
+			</div>
+			</div>
+		  </div>
+		  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab">
+		  	一覧
+		  </div>
+	</div>
+</div>
+

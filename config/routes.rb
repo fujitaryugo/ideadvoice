@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'orders/index'
+  get 'orders/show'
   devise_for :users
   devise_for :clients
   devise_for :admins
@@ -8,9 +10,10 @@ Rails.application.routes.draw do
 	namespace :clients do
 	    resources :clients, only: [:show, :update] do
 	  	resources :orders, only: [:create, :index, :show]
-
 	  end
   	end
   resources :clients, only: [:show]
-
+  resources :orders, only: [:index, :show] do
+  	resources :ideas, only: [:create, :show, :update, :destroy]
+  end
 end

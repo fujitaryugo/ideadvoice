@@ -1,16 +1,10 @@
 class ClientsController < ApplicationController
-	before_action :authenticate_client!
+	before_action :authenticate_user!
   def show
   	@client = Client.find(params[:id])
-    @order = Order.new
   	@orders = @client.orders
   end
 
-  def update
-  	@client = Client.find(params[:id])
-  	@client.update(client_params)
-  	redirect_to client_path(@client.id)
-  end
 
   private
   def client_params

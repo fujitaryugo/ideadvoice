@@ -1,2 +1,30 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xl-5">
+			<%= attachment_image_tag @user, :user_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'100x100' %>
+			<%= form_for (@user)do |f| %>
+			<%= f.attachment_field :user_image %><br>
+			<%= f.text_field :name %><br>
+			<%= f.select :sex, User.sexes.keys.to_a, {}  %><br>
+			<%= f.select :age, User.ages.keys.to_a, {} %><br>
+			<%= f.select :location, User.locations.keys.to_a, {} %><br>
+			<%= f.select :job, User.jobs.keys.to_a, {} %><br>
+			<%= f.submit %>
+			<% end %>
+		</div>
+		<div class="col-xl-5">
+			<tabel>
+				<tbody></tbody>
+			</tabel>
+			<% @ideas.each do |idea| %>
+			<div>
+				<%= idea.id %>
+				<strong class="text-center"><%= idea.idea_text %></strong><br>
+				<%= idea.idea_title %><br>
+		    </div>
+			<% end %>
+		</div>
+	</div>
+</div>
