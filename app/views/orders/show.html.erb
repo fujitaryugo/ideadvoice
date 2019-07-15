@@ -1,6 +1,6 @@
 <h1>Orders#show</h1>
 <p>Find me in app/views/orders/show.html.erb</p>
-<div class="container">
+<div class="container" >
 
 	<!--タブ-->
 	<ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -16,16 +16,37 @@
 		  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
 			<div class="container">
 	  		<div class="row">
-					<%= attachment_image_tag @order, :order_image, :fill,200,200, fallback:"no_image.jpeg", size:'200x200' %>
-					<%= @order.order_title %>
-					<%= @order.order_text %>
-					<%= @order.deadline %>
-					<%= attachment_image_tag @order, :reward_image, size:'200x200' %>
-					<%= @order.reward_content %>
+				<div class="col-xl-12">
+					<div class="card" style="margin:1% auto; background-image: url(app/assets/images/order.jpg);">
+						<div class="card-header" style="background-color:#ffa500">
+							<%= attachment_image_tag @client, :client_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'20x20',style:"border-radius: 50%;" %>
+							<%= @order.client.group_name %>
+						</div>
+						<div class="card-body">
+							<h3 class="card-title text-center"><%= @order.order_title %></h3>
+							<div class="text-center">どうして</div>
+							<div class="card-text text-center" style="margin-bottom:2%;"><%= @order.order_text %></div>
+							<div>
+								<% attachment_image_tag @order, :order_image, :fill,200,200, fallback:"no_image.jpeg", size:'200x200' %>
+							</div>
+							<div class="text-center">
+								募集締切<br>
+								<%= @order.deadline %>
+							</div>
+						</div>
+						<div class="card-body">
+							<p class="text-center">お礼</p>
+							<div class="text-center">
+							<%= attachment_image_tag @order, :reward_image, size:'100x100' %>
+							<%= @order.reward_content %>
+							</div>
+						</div>
+				    </div>
+				</div>
 			</div>
 			<div class="row">
 				<% @ideas.each do |idea| %>
-				<div class="col-xl-12 ">
+				<div class="col-12 col-xl-6">
 					<div class="card" style="margin:1% auto;">
 						<div class="card-header" style="background-color: #87ceeb">
 							<%= attachment_image_tag @user, :user_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'20x20',style:"border-radius: 50%;" %>

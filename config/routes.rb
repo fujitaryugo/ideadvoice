@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
 	namespace :clients do
 	    resources :clients, only: [:show, :update] do
-	  	resources :orders, only: [:create, :index, :show]
+	  	resources :orders, only: [:create, :update, :destroy, :index, :show]
 	  end
   	end
   resources :clients, only: [:show]

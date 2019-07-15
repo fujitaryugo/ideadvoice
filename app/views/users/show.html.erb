@@ -24,20 +24,20 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">モーダルのタイトル</h5>
+			        <h5 class="modal-title" id="exampleModalLabel">ユーザー情報編集</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
 			      <div class="modal-body">
-			        			<%= form_for (@user)do |f| %>
-								<%= f.attachment_field :user_image %><br>
-								<%= f.text_field :name %><br>
-								<%= f.select :sex, User.sexes.keys.to_a, {}  %><br>
-								<%= f.select :age, User.ages.keys.to_a, {} %><br>
-								<%= f.select :location, User.locations.keys.to_a, {} %><br>
-								<%= f.select :job, User.jobs.keys.to_a, {} %><br>
-								<%= f.email_field :email %>
+	        			<%= form_for (@user)do |f| %>
+						<%= f.attachment_field :user_image %><br>
+						<%= f.text_field :name %><br>
+						<%= f.select :sex, User.sexes.keys.to_a, {} %><br>
+						<%= f.select :age, User.ages.keys.to_a, {} %><br>
+						<%= f.select :location, User.locations.keys.to_a, {} %><br>
+						<%= f.select :job, User.jobs.keys.to_a, {} %><br>
+						<%= f.email_field :email %>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
@@ -47,8 +47,6 @@
 			    </div>
 			  </div>
 			</div>
-
-
 	</div>
 	<div class="row">
 			<% @ideas.each do |idea| %>
