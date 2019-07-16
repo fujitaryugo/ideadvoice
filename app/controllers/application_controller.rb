@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   	when User
   	 user_path(current_user)
   	when Client
-  	 cients_client_path(current_client)
+  	 clients_client_path(current_client)
   	end
   end
-
 end

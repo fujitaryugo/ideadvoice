@@ -1,34 +1,30 @@
-<div>
+<div style="margin-bottom: 5%">
 	<%= form_for @order, url:clients_client_orders_path(:client_id => @client.id ) do |f| %>
 	<div class="form-group">
 	 <label>依頼タイトル</label>
-	 <%= f.text_field :order_title %>
+	 <%= f.text_field :order_title,class: "col"  %>
 	</div>
 	<div class="form-group">
 	 <label>内容</label>
-	 <%= f.text_area :order_text %>
+	 <%= f.text_area :order_text,class: "col"  %>
 	</div>
 	<div class="form-group">
-	 <label>イメージ</label>
+	 <label>イメージ</label><br>
 	 <%= f.attachment_field :order_image, fallback:"no_image.jpeg" %>
 	</div>
 	<div class="form-group">
+		 <label>締切日</label>
 		 <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-		 	<label>締切日</label>
+			 <%= f.text_field :deadline, class: 'datetimepicker-input', data: {target: "#datetimepicker4"}%>
 		 	<div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
-			 <%= f.text_field :deadline, class: 'datetimepicker-input' , id: "deadline", data: {toggle: "datetimepicker", target: "#deadline"}%>
 			 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 			</div>
 		</div>
 	</div>
 	<div class="form-group">
-	 <label>報酬イメージ</label>
-	 <%= f.attachment_field :reward_image , fallback:"reward.jpeg" %>
-	</div>
-	<div class="form-group">
 	 <label>報酬内容</label>
-	 <%= f.text_area :reward_content %>
+	 <%= f.text_area :reward_content,class: "col" %>
 	</div>
-	<%= f.submit "投稿",class: "btn btn-primary" %>
+	<%= f.submit "投稿",class: "btn btn-primary col" %>
 	<% end %>
 </div>

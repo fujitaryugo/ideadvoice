@@ -11,7 +11,7 @@
 			<p><%= raw Rinku.auto_link(h(@client.client_url)) %></p>
 		</div>
 		<div class="col">
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">編集</button>
+			<button type="button" class="btn btn-primary" data-backdrop="static"  data-toggle="modal" data-target="#myModal">編集</button>
 		</div>
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			  <div class="modal-dialog" role="document">
@@ -66,30 +66,30 @@
 			  </div>
 			</div>
 		</div>
-<div>
-<!-- タブ部分 -->
-<ul id="myTab" class="nav nav-tabs" role="tablist">
-  <li class="nav-item">
-    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
-  </li>
-  <li class="nav-item">
-    <a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">依頼投稿</a>
-  </li>
-  <li class="nav-item">
-    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">おおお</a>
-  </li>
-</ul>
+		<div>
+			<!-- タブ部分 -->
+			<ul id="myTab" class="nav nav-tabs" role="tablist">
+			  <li class="nav-item">
+			    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
+			  </li>
+			  <li class="nav-item">
+			    <a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">依頼投稿</a>
+			  </li>
+			  <li class="nav-item">
+			    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">おおお</a>
+			  </li>
+			</ul>
 
-<!-- パネル部分 -->
-<div id="myTabContent" class="tab-content mt-3">
-  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
-  	<%= render 'clients/order'%>
-  </div>
-  <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
-  	<%= render 'orders/new' %>
-  </div>
-  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab">
-  </div>
-</div>
-</div>
+			<!-- パネル部分 -->
+			<div id="myTabContent" class="tab-content mt-3">
+			  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
+			  	<%= render 'clients/order'%>
+			  </div>
+			  <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
+			  	<%= render 'orders/new' %>
+			  </div>
+			  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab">
+			  </div>
+			</div>
+		</div>
 </div>

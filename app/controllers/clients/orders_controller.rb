@@ -12,6 +12,12 @@ class Clients::OrdersController < ApplicationController
 		@ideas = @order.ideas
 	end
 
+	def update
+		@order = Order.find(params[:id])
+		@order.update(order_params)
+		redirect_to clients_client_order_path(params[:client_id],@order)
+	end
+
 	def destroy
 		@order = Order.find(params[:id])
 		@order.destroy

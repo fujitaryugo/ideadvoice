@@ -1,6 +1,6 @@
 <div class="row">
 	<% @orders.each do |order| %>
-	<div class="col-12 col-xl-3" style="margin:1% 0;">
+	<div class="col-12 col-xl-6" style="margin:1% 0;">
 		<div class="card" >
 			<div class="card-header" style="background-color: #eaf4ff">
 				<%= link_to clients_client_order_path(@client.id,order.id) do %>
@@ -8,18 +8,15 @@
 				<% end %>
 			</div>
 			<div class="card-body">
-				<div class="d-inline-block text-truncate" style="max-width: 150px;"><%= order.order_text %></div>
+				<div class="d-inline-block text-truncate" style="max-width: 500px;"><%= order.order_text %></div>
 			</div>
 			<div class="card-body">
+				<label >締め切り日</label>
 				<%= order.deadline.strftime('%Y年%m月%d日') %>
 			</div>
 			<div class="card-footer text-muted small" style="background-color: #eaf4ff">
 				<div class="row">
-					<div class="col-5 offset-7">
-						<%= link_to clients_client_order_path(@client.id,order.id),method: :delete, "data-confirm" => "本当に消しますか？" do %>
-						<div class="btn-sm btn-danger text-center">削除</div>
-						<% end %>
-					</div>
+					<div class="col-5 offset-7"></div>
 				</div>
 			</div>
 		</div>

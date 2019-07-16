@@ -1,9 +1,9 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 <div class="container">
-	<div class="row">
+	<div class="row" style="margin-bottom:5%;">
 		<div class="col-xl-3 col-xl-1">
-			<%= attachment_image_tag @user, :user_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'100x100',style:"border-radius: 50%;" %>
+			<%= attachment_image_tag @user, :user_image, :fill,100,100, fallback:"user_no_image.jpeg",style:"border-radius: 50%;" %>
 		</div>
 		<div class="col-xl-5">
 			<strong><%= @user.name %></strong>
@@ -18,10 +18,12 @@
 					</tr>
 				</tbody>
 			</table>
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">編集</button>
+			<% if @user == current_user %>
+			<button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#myModal">編集</button>
+			<% end %>
 		</div>
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog" role="document">
+			<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h5 class="modal-title" id="exampleModalLabel">ユーザー情報編集</h5>
@@ -31,13 +33,30 @@
 			      </div>
 			      <div class="modal-body">
 	        			<%= form_for (@user)do |f| %>
-						<%= f.attachment_field :user_image %><br>
-						<%= f.text_field :name %><br>
-						<%= f.select :sex, User.sexes.keys.to_a, {} %><br>
-						<%= f.select :age, User.ages.keys.to_a, {} %><br>
-						<%= f.select :location, User.locations.keys.to_a, {} %><br>
-						<%= f.select :job, User.jobs.keys.to_a, {} %><br>
+	        		<div class="form-group">
+	        			<label>プロフィール画像</label>
+						<%= f.attachment_field :user_image %>
+					</div>
+					<div class="form-group">
+						<label>ユーザーネーム</label>
+						<%= f.text_area :name,class: "col" %>
+					</div>
+					<div class="form-group">
+						<label></label>
+						<%= f.select :sex, User.sexes.keys.to_a, {} %>
+					</div>
+					<div class="form-group">
+						<%= f.select :age, User.ages.keys.to_a, {} %>
+					</div>
+					<div class="form-group">
+						<%= f.select :location, User.locations.keys.to_a, {} %>
+					</div>
+					<div class="form-group">
+						<%= f.select :job, User.jobs.keys.to_a, {} %>
+					</div>
+					<div class="form-group">
 						<%= f.email_field :email %>
+					</div>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
@@ -48,18 +67,50 @@
 			  </div>
 			</div>
 	</div>
-	<div class="row">
-			<% @ideas.each do |idea| %>
-			<div class="col-xl-12 ">
-				<div class="card" style="margin:1% auto;">
-					<%= idea.id %>
-					<div class="card-body">
-						<strong class="card-title"><%= idea.idea_title %></strong>
-						<div class="card-text" style="margin-bottom:2%;"><%= idea.idea_text %></div>
-						<div>投稿日<%= idea.created_at.strftime('%Y年%m月%d日') %></div>
+	<div>
+		<!-- タブ部分 -->
+		<ul id="myTab" class="nav nav-tabs" role="tablist">
+		  <li class="nav-item">
+		    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
+		  </li>
+		  <li class="nav-item">
+		    <a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">aaaa</a>
+		  </li>
+		  <li class="nav-item">
+		    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">aaaaa</a>
+		  </li>
+		</ul>
+
+		<!-- パネル部分 -->
+		<div id="myTabContent" class="tab-content mt-3">
+		  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
+			<div class="row">
+				<% @ideas.each do |idea| %>
+				<div class="col-12 col-xl-6" style="margin:1% 0;">
+					<div class="card" >
+					<div class="card-header" style="background-color: #eaf4ff">
+						<%= link_to order_idea_path(idea.order_id,idea) do %>
+						<%= idea.idea_title %>
+						<% end %>
 					</div>
-			    </div>
+					<div class="card-body">
+						<div class="d-inline-block text-truncate" style="max-width: 500px;"><%= idea.idea_text %></div>
+					</div>
+					<div class="card-footer text-muted small" style="background-color: #eaf4ff">
+						<div class="row">
+						<div class="col-4 offset-6">
+							<label>投稿日</label>
+							<%= idea.created_at.strftime('%Y年%m月%d日') %>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				<% end %>
 			</div>
-			<% end %>
+		  </div>
+		  <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab"></div>
+		  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab"></div>
+		</div>
 	</div>
 </div>
