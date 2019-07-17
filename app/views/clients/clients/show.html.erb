@@ -1,20 +1,22 @@
 <h1>Clients#show</h1>
 <p>Find me in app/views/clients/clients/show.html.erb</p>
 <div class="container">
-	<div class="row">
+	<div class="row" style="margin-bottom:2%;">
 		<div class="col-2">
 			<%= attachment_image_tag @client, :client_image, :fill,100,100, fallback:"client.jpeg", size:'100x100',style:"border-radius: 50%;" %>
 		</div>
 		<div class="col-8">
 			<strong class="strong"><%= @client.group_name %></strong>
 			<p><%= @client.introduction %></p>
-			<p><%= raw Rinku.auto_link(h(@client.client_url)) %></p>
+			<a href='<%= @client.client_url %>' target="_blank"><%= @client.client_url %></a>
 		</div>
 		<div class="col">
+			<% if @client == current_client %>
 			<button type="button" class="btn btn-primary" data-backdrop="static"  data-toggle="modal" data-target="#myModal">編集</button>
+			<% end %>
 		</div>
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog" role="document">
+			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h5 class="modal-title" id="exampleModalLabel">ユーザー情報編集</h5>
@@ -25,36 +27,34 @@
 			      <div class="modal-body">
 						 <%= form_for @client, url:clients_client_path(:client_id => @client.id ) do |f| %>
 						  <label>画像</label>
-
 						  <%= f.attachment_field :client_image %>
-
 						  <div class="form-group">
 						    <label>団体名</label>
-						    <%= f.text_field :group_name %>
+						    <%= f.text_field :group_name, class: "col" %>
 						  </div>
 						  <div class="form-group">
 						    <label>担当者姓</label>
-						    <%= f.text_field :last_name %>
+						    <%= f.text_field :last_name, class: "col" %>
 						  </div>
 						  <div class="form-group">
 						    <label>担当者名</label>
-						    <%= f.text_field :first_name %>
+						    <%= f.text_field :first_name, class: "col" %>
 						  </div>
 						  <div class="form-group">
 						    <label>電話番号</label>
-						    <%= f.text_field :phone_number %>
+						    <%= f.text_field :phone_number, class: "col" %>
 						  </div>
 						  <div class="form-group">
 						    <label>メールアドレス</label>
-						    <%= f.text_field :email %>
+						    <%= f.text_field :email, class: "col" %>
 						  </div>
 						  <div class="form-group">
 						    <label>団体URL</label>
-						    <%= f.text_field :client_url %>
+						    <%= f.text_field :client_url, class: "col" %>
 						  </div>
 						  <div class="form-group">
 						    <label>紹介文</label>
-						    <%= f.text_area :introduction %>
+						    <%= f.text_area :introduction, class: "col" %>
 						  </div>
 			      </div>
 			      <div class="modal-footer">
@@ -72,9 +72,11 @@
 			  <li class="nav-item">
 			    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
 			  </li>
+			  <% if @client == current_client %>
 			  <li class="nav-item">
 			    <a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">依頼投稿</a>
 			  </li>
+			  <% end %>
 			  <li class="nav-item">
 			    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">おおお</a>
 			  </li>

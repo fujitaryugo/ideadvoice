@@ -8,7 +8,6 @@
 		<div class="col-xl-5">
 			<strong><%= @user.name %></strong>
 			<table>
-
 				<tbody>
 					<tr>
 						<td><%= @user.sex %>/</td>
@@ -18,6 +17,9 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+	</div>
+		<div class="row">
 			<% if @user == current_user %>
 			<button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#myModal">編集</button>
 			<% end %>
@@ -66,7 +68,6 @@
 			    </div>
 			  </div>
 			</div>
-	</div>
 	<div>
 		<!-- タブ部分 -->
 		<ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -88,22 +89,22 @@
 				<% @ideas.each do |idea| %>
 				<div class="col-12 col-xl-6" style="margin:1% 0;">
 					<div class="card" >
-					<div class="card-header" style="background-color: #eaf4ff">
-						<%= link_to order_idea_path(idea.order_id,idea) do %>
-						<%= idea.idea_title %>
-						<% end %>
-					</div>
-					<div class="card-body">
-						<div class="d-inline-block text-truncate" style="max-width: 500px;"><%= idea.idea_text %></div>
-					</div>
-					<div class="card-footer text-muted small" style="background-color: #eaf4ff">
-						<div class="row">
-						<div class="col-4 offset-6">
-							<label>投稿日</label>
-							<%= idea.created_at.strftime('%Y年%m月%d日') %>
+						<div class="card-header" style="background-color: #eaf4ff">
+							<%= link_to order_idea_path(idea.order_id,idea) do %>
+							<%= idea.idea_title %>
+							<% end %>
 						</div>
+						<div class="card-body">
+							<div class="d-inline-block text-truncate" style="max-width: 500px;"><%= idea.idea_text %></div>
 						</div>
-					</div>
+						<div class="card-footer text-muted small" style="background-color: #eaf4ff">
+							<div class="row">
+							<div class="col-4 offset-6">
+								<label>投稿日</label>
+								<%= idea.created_at.strftime('%Y年%m月%d日') %>
+							</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<% end %>

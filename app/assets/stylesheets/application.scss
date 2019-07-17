@@ -16,3 +16,10 @@
  @import "bootstrap";
  @import "font-awesome";
  @import "tempusdominus-bootstrap-4.css";
+
+.modal-dialog{
+	width:200%;
+}
+.modal-content{
+  max-width: 300%;
+}

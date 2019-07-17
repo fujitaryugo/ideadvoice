@@ -1,2 +1,28 @@
 <h1>Orders#index</h1>
 <p>Find me in app/views/orders/index.html.erb</p>
+<div class="container">
+	<div class="row">
+	<% @orders.each do |order| %>
+	<div class="col-12 col-xl-4">
+		<div class="card"  style="margin:5% 0;">
+			<div class="card-header" style="background-color: #eaf4ff">
+				<%= attachment_image_tag order.client, :client_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'20x20',style:"border-radius: 50%;" %>
+				<%= order.client.group_name %>
+			</div>
+			<div class="card-body">
+				<div class="text-center">
+					<%= link_to order_path(order) do %><%= order.order_title %><% end %>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="d-inline-block text-truncate" style="max-width: 300px;"><%= order.order_text %></div>
+			</div>
+			<div class="card-footer text-muted small" style="background-color: #eaf4ff">
+				<label>締め切り日</label>
+				<%= order.deadline.strftime('%Y年%m月%d日') %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	</div>
+</div>

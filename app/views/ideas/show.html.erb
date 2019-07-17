@@ -3,7 +3,7 @@
 		<div class="col-12">
 			<div class="card" style="margin:1% auto; background-image: url(app/assets/images/order.jpg);">
 				<div class="card-header" style="background-color:#ffa500;">
-					<%= attachment_image_tag @order.client, :client_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'20x20',style:"border-radius: 50%;" %>
+					<%= attachment_image_tag @order.client, :client_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40"  %>
 					<%= @order.client.group_name %>
 				</div>
 				<div class="card-body">
@@ -14,7 +14,7 @@
 		<div class="col-12">
 			<div class="card" style="margin:1% auto;">
 				<div class="card-header" style="background-color: #87ceeb">
-					<%= attachment_image_tag @idea.user, :user_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'20x20',style:"border-radius: 50%;" %>
+					<%= attachment_image_tag @idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;" %>
 					<%= @idea.user.name %>
 				</div>
 				<div class="card-body">
@@ -59,6 +59,43 @@
 					<% end %>
 				</div>
 				<% end %>
+				<div class="card-fotter container">
+					<div class="row">
+						<div class="col-1 offset-1">
+							<% if @idea.favorited_by?(current_user) %>
+							  <div>
+							    <%= link_to order_idea_favorite_path(@order,@idea),method: :delete do %>
+							      <i class="fa fa-thumbs-up fa-3x " aria-hidden="true" style="color: #87ceeb;"></i><br>
+							    <% end %>
+							  </div>
+							<% else %>
+							  <div>
+							    <%= link_to order_idea_favorites_path(@order,@idea),:style=>"color:#777;text-decoration: none;", method: :post do %>
+							      <i class="fa fa-thumbs-up fa-3x " aria-hidden="true"></i><br>
+							    <% end %>
+							  </div>
+							<% end %>
+						</div>
+						<div class="formgroup col-8">
+							<%= form_for @comment,url:order_idea_comments_path(@order,@idea) do |f| %>
+							<%= f.text_area :comment_text, class: "form-control-lg",style:"width:100%;" ,placeholder:"コメント"%>
+						</div>
+						<div class="col-1">
+							<%= f.submit "投稿",class: "btn btn-primary" %>
+							<% end %>
+						</div>
+					</div>
+					<div class="">
+						<% @comments.each do |comment| %>
+						<div class="col">
+							<%= comment.user_id %>
+							<%= attachment_image_tag comment.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;" %>
+							<%= comment.user.name %>
+							<%= comment.comment_text %>
+							</div>
+						<% end %>
+					</div>
+				</div>
 		    </div>
 		</div>
 	</div>
