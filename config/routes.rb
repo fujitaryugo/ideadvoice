@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :clients, only: [:show]
   resources :orders, only: [:index, :show] do
   	resources :ideas, only: [:create, :show, :update, :destroy] do
-  		resources :comments, only: [:create, :update, :destroy]
+  		resources :comments, only: [:create, :destroy]
   		resources :favorites, only: [:create, :destroy]
   	end
   end

@@ -15,6 +15,7 @@ class IdeasController < ApplicationController
 		@user = current_user.id
 		@comment = Comment.new
 		@comments = @idea.comments
+		@user = current_user
 	end
 
 	def update

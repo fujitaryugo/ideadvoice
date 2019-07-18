@@ -9,10 +9,11 @@ class CommentsController < ApplicationController
 		redirect_to order_idea_path(@idea.order_id,@idea)
 	end
 
-	def update
-	end
-
 	def destroy
+		@idea = Idea.find(params[:idea_id])
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		redirect_to order_idea_path(@idea.order_id,@idea)
 	end
 
 	private
