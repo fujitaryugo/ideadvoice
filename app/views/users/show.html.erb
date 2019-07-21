@@ -1,84 +1,81 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 <div class="container">
 	<div class="row" style="margin-bottom:5%;">
-		<div class="col-xl-3 col-xl-1">
+		<div class="col-2 ">
 			<%= attachment_image_tag @user, :user_image, :size => "100x100", fallback:"user_no_image_big.jpeg",style:"border-radius: 50%;"   %>
 		</div>
-		<div class="col-xl-5">
-			<strong><%= @user.name %></strong>
-			<table>
-				<tbody>
-					<tr>
-						<td><%= @user.sex %>/</td>
-						<td><%= @user.age %>/</td>
-						<td><%= @user.location %>/</td>
-						<td><%= @user.job %></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="col row">
+			<div class= "font-weight-bold col-9"><%= @user.name %></div>
+			<div class="col-3">
+				<% if @user == current_user %>
+				<button type="button" class="btn btn-outline-success" data-backdrop="static" data-toggle="modal" data-target="#myModal">
+					<i class="fas fa-cogs"></i>
+				</button>
+				<% end %>
+			</div>
+			<div class="col-12"><%= @ideas.count %><br>投稿</div>
+			<div class="col-12"><%= @user.sex %> / <%= @user.age %> / <%= @user.location %> / <%= @user.job %></div>
 		</div>
 	</div>
-		<div class="row">
-			<% if @user == current_user %>
-			<button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#myModal">編集</button>
-			<% end %>
-		</div>
+			<!--編集モーダル-->
 			<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">ユーザー情報編集</h5>
+			        <h5 class="modal-title text-success" id="exampleModalLabel">ユーザー情報編集</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-			          <span aria-hidden="true">&times;</span>
+			          <span class="text-success" aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
-			      <div class="modal-body">
+			      <div class="modal-body ">
 	        			<%= form_for (@user)do |f| %>
 	        		<div class="form-group">
-	        			<label>プロフィール画像</label>
+	        			<label class="text-success">プロフィール画像</label>
 						<%= f.attachment_field :user_image %>
 					</div>
 					<div class="form-group">
-						<label>ユーザーネーム</label>
-						<%= f.text_area :name,class: "col" %>
+						<label class="text-success">ユーザーネーム</label>
+						<%= f.text_field :name,class: "col border border-success" %>
 					</div>
 					<div class="form-group">
-						<label></label>
+						<label class=" col-2 text-success">性別</label>
 						<%= f.select :sex, User.sexes.keys.to_a, {} %>
 					</div>
 					<div class="form-group">
+						<label class="col-2 text-success">年齢</label>
 						<%= f.select :age, User.ages.keys.to_a, {} %>
 					</div>
 					<div class="form-group">
+						<label class="col-2 text-success">所在地</label>
 						<%= f.select :location, User.locations.keys.to_a, {} %>
 					</div>
 					<div class="form-group">
+						<label class="col-2 text-success">職業</label>
 						<%= f.select :job, User.jobs.keys.to_a, {} %>
 					</div>
 					<div class="form-group">
-						<%= f.email_field :email %>
+						<label class="text-success">メールアドレス</label>
+						<%= f.email_field :email,class: "col border border-success" %>
 					</div>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-			        <%= f.submit "編集",class: "btn btn-primary" %>
+			        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">閉じる</button>
+			        <%= f.submit "編集",class: "btn btn-outline-success" %>
 			        <% end %>
 			      </div>
 			    </div>
 			  </div>
 			</div>
-	<div>
 		<!-- タブ部分 -->
+	<div class="col-12">
 		<ul id="myTab" class="nav nav-tabs" role="tablist">
 		  <li class="nav-item">
-		    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
+		    <a href="#home" id="home-tab" class="nav-link active text-success" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
 		  </li>
 		  <li class="nav-item">
-		    <a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">aaaa</a>
+		    <a href="#profile" id="profile-tab" class="nav-link text-success" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">aaaa</a>
 		  </li>
 		  <li class="nav-item">
-		    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">aaaaa</a>
+		    <a href="#contact" id="contact-tab" class="nav-link text-success" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">aaaaa</a>
 		  </li>
 		</ul>
 
@@ -87,22 +84,20 @@
 		  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
 			<div class="row">
 				<% @ideas.each do |idea| %>
-				<div class="col-12 col-xl-6" style="margin:1% 0;">
-					<div class="card" >
-						<div class="card-header" style="background-color: #eaf4ff">
-							<%= link_to order_idea_path(idea.order_id,idea) do %>
+				<div class="col-12" style="margin:1% 0;">
+					<div class="card border border-success" >
+						<div class="card-header bg-success">
+							<%= link_to order_idea_path(idea.order_id,idea),class: "text-white" do %>
 							<%= idea.idea_title %>
 							<% end %>
 						</div>
 						<div class="card-body">
-							<div class="d-inline-block text-truncate" style="max-width: 500px;"><%= idea.idea_text %></div>
+							<div class="d-inline-block"><%= idea.idea_text %></div>
 						</div>
-						<div class="card-footer text-muted small" style="background-color: #eaf4ff">
-							<div class="row">
-							<div class="col-4 offset-6">
+						<div class="card-footer ">
+							<div class="text-right text-muted small text-white">
 								<label>投稿日</label>
 								<%= idea.created_at.strftime('%Y年%m月%d日') %>
-							</div>
 							</div>
 						</div>
 					</div>
@@ -110,7 +105,9 @@
 				<% end %>
 			</div>
 		  </div>
-		  <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab"></div>
+		  <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
+		  	s
+		  </div>
 		  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab"></div>
 		</div>
 	</div>

@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :ideas, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+  validates :name,presence: true, length:{ in: 1..20}
+  
   enum sex: {
   	"性別未選択": 0,"男性": 1,"女性": 2,"無回答": 3
   }

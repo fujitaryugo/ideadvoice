@@ -20,9 +20,14 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
 	namespace :clients do
 	    resources :clients, only: [:show, :update] do
-	  	resources :orders, only: [:create, :update, :destroy, :index, :show]
+	  	resources :orders, only: [:create, :update, :destroy, :index, :show] do
+	  		resources :ideas, only: [:show] do
+	  			resources :awards, only: [:create, :destroy]
+	  		end
+	  	end
 	  end
   	end
+
   resources :clients, only: [:show]
   resources :orders, only: [:index, :show] do
   	resources :ideas, only: [:create, :show, :update, :destroy] do
@@ -30,4 +35,5 @@ Rails.application.routes.draw do
   		resources :favorites, only: [:create, :destroy]
   	end
   end
+
 end

@@ -1,29 +1,58 @@
-<h2>Sign up</h2>
-
+<div class="container">
+<div class="row">
+<div class="col border border-success rounded" style="margin-top: 5%;">
+<h2 class="text-center text-success" style="margin-top: 5%;">新規登録</h2>
+<div  style="margin: 5% auto;">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-group row" style="margin-top: 5%;">
+    <label class="text-left text-success col-4 offset-2">ユーザーネーム</label>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name",class: "text-success border border-success"%>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="form-group row">
+    <label class="text-left text-success col-4 offset-2">性別</label>
+    <%= f.select :sex, User.sexes.keys.to_a, {} ,class: "text-success border border-success"%>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="form-group row">
+    <label  class="text-left text-success col-4 offset-2">年齢</label>
+    <%= f.select :age, User.ages.keys.to_a, {} ,class: "text-success border border-success"%>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="form-group row">
+    <label class="text-left text-success col-4 offset-2">所在地</label>
+    <%= f.select :location, User.locations.keys.to_a, {},class: "text-success border border-success" %>
+  </div>
+
+  <div class="form-group row">
+    <label class="text-left text-success col-4 offset-2">職業</label>
+    <%= f.select :job, User.jobs.keys.to_a, {} ,class: "text-success border border-success"%>
+  </div>
+
+  <div class="form-group row">
+    <label class="text-left text-success col-4 offset-2">Eメール</label>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "text-success border border-success"%>
+  </div>
+
+  <div class="form-group row">
+    <label class="text-left text-success col-4 offset-2">パスワード(<%= @minimum_password_length %>文字以上)</label>
+    <%= f.password_field :password, autocomplete: "new-password" ,class: "text-success border border-success"%>
+  </div>
+
+  <div class="form-group row">
+    <label class="text-left text-success col-4 offset-2">パスワード(確認用)</label>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class: "text-success border border-success"%>
+  </div>
+
+  <div class="form-group row">
+    <%= f.submit "新規登録" ,class: "btn btn-outline-success rounded-pill col-8 offset-2"%>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+</div>
+  <div class="col-2 offset-5 text-center btn btn-outline-success rounded-pill" style="margin-bottom: 5%;">
+  <%= render "users/shared/links"%>
+  </div>
+</div>
+</div>

@@ -8,6 +8,7 @@ class Clients::OrdersController < ApplicationController
 	end
 
 	def show
+		@client_id
 		@order = Order.find(params[:id])
 		@ideas = @order.ideas
 	end

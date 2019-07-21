@@ -1,10 +1,11 @@
 <div class="container">
   		<div class="row">
 		<div class="col-xl-12">
-			<div class="card" style="margin:1% auto; background-image: url(app/assets/images/order.jpg);">
-				<div class="card-header" style="background-color:#ffa500;">
-					<%= attachment_image_tag @client, :client_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'20x20',style:"border-radius: 50%;" %>
+			<div class="card" style="margin:1% auto;">
+				<div class="card-header bg-info text-white">
+					<%= attachment_image_tag @order.client, :client_image, :fill,40,40, fallback:"user_no_image.jpeg", size:'40x40',style:"border-radius: 50%;" %>
 					<%= @order.client.group_name %>
+
 				</div>
 				<div class="card-body">
 					<h3 class="card-title text-center"><%= @order.order_title %></h3>
@@ -32,8 +33,8 @@
 				<div class="card-footer container">
 					<div class="row">
 					<!--依頼編集モーダルボタン-->
-					<button type="button" class="btn btn-primary col-2 offset-2" data-toggle="modal" data-target="#myModal">編集</button>
-					<%= link_to clients_client_order_path(@order.client_id),method: :delete,  class: "btn btn-danger col-2 offset-4", "data-confirm" => "本当に消しますか？" do %>
+					<button type="button" class="btn btn-outline-primary col-2 offset-2" data-toggle="modal" data-target="#myModal">編集</button>
+					<%= link_to clients_client_order_path(@order.client_id),method: :delete,  class: "btn btn-outline-danger col-2 offset-4", "data-confirm" => "本当に消しますか？" do %>
 						削除
 					<% end %>
 					</div>
@@ -104,9 +105,28 @@
 				<% @ideas.each do |idea| %>
 				<div class="col-12 col-xl-6">
 					<div class="card" style="margin:1% auto;">
-						<div class="card-header" style="background-color: #87ceeb">
-							<%= attachment_image_tag @user, :user_image, :fill,20,20, fallback:"user_no_image.jpeg", size:'20x20',style:"border-radius: 50%;" %>
+						<div class="card-header bg-success text-white">
+							<div class="row">
+							<div class="col-11">
+							<%= link_to clients_client_order_idea_path(@order.client_id,@order,idea.id),class: "text-white" do %>
+							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg", size:'40x40',style:"border-radius: 50%;" %>
 							<%= idea.user.name %>
+							<% end %>
+							</div>
+							<% if idea.awarded_by?(current_client) %>
+							  <div class="col-1">
+							    <%= link_to clients_client_order_idea_award_path(@order.client,@order,idea),method: :delete do %>
+							      <i class="fas fa-award fa-2x " aria-hidden="true" style="color: gold;"></i>
+							    <% end %>
+							  </div>
+							<% else %>
+							  <div class="col-1">
+							    <%= link_to clients_client_order_idea_awards_path(@order.client,@order,idea),:style=>"color:#777;text-decoration: none;", method: :post do %>
+							      <i class="fas fa-award fa-2x " aria-hidden="true"></i>
+							    <% end %>
+							  </div>
+							<% end %>
+						</div>
 						</div>
 						<div class="card-body">
 							<h3 class="card-title text-center"><%= simple_format(idea.idea_title) %></h3>
