@@ -13,11 +13,11 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_parameters
 
-  	if params['controller'] == 'users/registrations'
-	    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :sex, :age, :location, :job])
-	elsif params['controller'] == 'clients/registrations'
-	    devise_parameter_sanitizer.permit(:sign_up, keys: [:group_name, :last_name, :first_name, :phone_number, :client_url, :introduction])
-	end
+    if params['controller'] == 'users/registrations'
+  	    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :sex, :age, :location, :job])
+  	elsif params['controller'] == 'clients/registrations'
+  	    devise_parameter_sanitizer.permit(:sign_up, keys: [:group_name, :last_name, :first_name, :phone_number, :client_url, :introduction])
+  	end
   end
 
 end

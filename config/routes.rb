@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 	    resources :clients, only: [:show, :update] do
 	  	resources :orders, only: [:create, :update, :destroy, :index, :show] do
 	  		resources :ideas, only: [:show] do
-	  			resources :awards, only: [:create, :destroy]
+	  			resource :awards, only: [:create, :destroy]
 	  		end
 	  	end
 	  end

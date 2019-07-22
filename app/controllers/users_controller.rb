@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
   	@ideas = @user.ideas
+  	@favorites = @user.favorites.all
+  	@awards = Award.where(idea: @ideas)
   end
 
   def update

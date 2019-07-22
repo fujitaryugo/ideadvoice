@@ -25,22 +25,11 @@
 		<div class="card-body" style="background-color: white;">
 			<div class="row">
 				<div class="offset-1">
-					
-					<% if @idea.awarded_by?(current_client) %>
-					  <div class="">
-					    <%= link_to clients_client_order_idea_award_path(@order.client,@order,@idea),method: :delete do %>
-					      <i class="fas fa-award fa-3x " aria-hidden="true" style="color: gold;"></i>
-					    <% end %>
-					    <label><%= @idea.awards.count %></label>
-					  </div>
-					<% else %>
-					  <div>
-					    <%= link_to clients_client_order_idea_awards_path(@order.client,@order,@idea),:style=>"color:#777;text-decoration: none;", method: :post do %>
-					      <i class="fas fa-award fa-3x " aria-hidden="true"></i>
-					    <% end %>
-					    <label class="font-weight-bold"><%= @idea.awards.count %><label>
-					  </div>
-					<% end %>
+			<!--いいね-->
+				<div id="award_buttons_<%= @idea.id %>">
+					<%= render partial: "clients/awards/award", locals: {idea: @idea} %>
+				</div>
+			<!------->
 				</div>
 
 				<div class="text-right font-italic text-muted small offset-8" style="text-align: center;" >投稿日<%= @idea.created_at.strftime('%Y年%m月%d日') %>

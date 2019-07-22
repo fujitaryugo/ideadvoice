@@ -1,26 +1,10 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
 <div class="container" >
-
-	<!--タブ-->
-	<ul id="myTab" class="nav nav-tabs" role="tablist">
-	  <li class="nav-item">
-	    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">依頼</a>
-	  </li>
-	  <li class="nav-item">
-	    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">アイデア一覧</a>
-	  </li>
-	</ul>
-	<!--パネル-->
-	<div id="myTabContent" class="tab-content mt-3">
-		  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
-			<div class="container">
 	  		<div class="row">
 				<div class="col-xl-12">
-					<div class="card" style="margin:1% auto; background-image: url(app/assets/images/order.jpg);">
-						<div class="card-header" style="background-color:#ffa500">
-						<%= link_to client_path(@order.client_id),:style=>"color: #404040;text-decoration: none;" do %>
-							<%= attachment_image_tag @order.client, :client_image, :fill,40,40, fallback:"client_no_image.jpeg",style:"border-radius: 50%;" %>
+					<div class="card" style="margin:1% auto; border-color:#fd9900;">
+						<div class="card-header" style="background-color: #fed9a0; border-color:#fd9900;">
+						<%= link_to client_path(@order.client_id),:style=>"color:  #2d566b;text-decoration: none;" do %>
+							<%= attachment_image_tag @order.client, :client_image, :fill,40,40, fallback:"client_no_image.jpeg",size: "40x40",style:"border-radius: 50%;" %>
 							<%= @order.client.group_name %>
 						<% end %>
 						</div>
@@ -46,13 +30,27 @@
 				    </div>
 				</div>
 			</div>
+
+	<!--タブ-->
+	<ul id="myTab" class="nav nav-tabs" role="tablist">
+	  <li class="nav-item">
+	    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true" style="color: #2d566b;">依頼</a>
+	  </li>
+	  <li class="nav-item">
+	    <a href="#contact" id="contact-tab" class="nav-link " role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false" style="color: #2d566b;">アイデア一覧</a>
+	  </li>
+	</ul>
+	<!--パネル-->
+	<div id="myTabContent" class="tab-content mt-3">
+		  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
+			<div class="container">
 			<div class="row">
 				<% @ideas.each do |idea| %>
 				<div class="col-12 col-xl-6">
-					<div class="card" style="margin:1% auto;">
-						<div class="card-header" style="background-color: #87ceeb">
-						<%= link_to order_idea_path(idea.order_id,idea),:style=>"color: #404040;text-decoration: none;" do %>
-							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;" %>
+					<div class="card " style="margin:1% auto;border-color: #30c5bb;">
+						<div class="card-header" style="background-color: #aeefdd; border-color: #30c5bb;">
+						<%= link_to order_idea_path(idea.order_id,idea),:style=>"color: #2d566b;text-decoration: none;" do %>
+							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",size: "40x40",style:"border-radius: 50%; color: white;" %>
 							<%= idea.user.name %>
 						<% end %>
 						</div>

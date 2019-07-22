@@ -6,16 +6,15 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
   </head>
 
   <body>
@@ -23,20 +22,20 @@
 <h1 class="god">GODOFTRAIN</h1>
     <% if user_signed_in? %>
       <ul class="nav container">
-      <li class="nav-item col"><%= link_to root_path, :style=>"color:#28a744;" do %><i class="fas fa-home">ホーム</i><% end %></li>
-      <li class="nav-item col"><%= link_to orders_path, :style=>"color:#28a744;" do %><i class="fas fa-rocket">依頼一覧</i><% end %></li>
-      <li class="nav-item col"><%= link_to user_path(current_user), :style=>"color:#28a744;" do %>
+      <li class="nav-item col"><%= link_to root_path, :style=>"color:#2d566b;" do %><i class="fas fa-home">ホーム</i><% end %></li>
+      <li class="nav-item col"><%= link_to orders_path, :style=>"color:#2d566b;" do %><i class="fas fa-rocket">依頼一覧</i><% end %></li>
+      <li class="nav-item col"><%= link_to user_path(current_user), :style=>"color:#2d566b;" do %>
         <i class="fa fa-user">マイページ</i><% end %></li>
-      <li class="nav-item col"><%= link_to destroy_user_session_path, method: :delete , :style=>"color:#28a744;" do %>
+      <li class="nav-item col"><%= link_to destroy_user_session_path, method: :delete , :style=>"color:#2d566b;" do %>
         <i class="fas fa-running">ログアウト</i><% end %></li>
       <li class="nav-item col">ユーザーログインしてる</li>
       </ul>
     <% elsif client_signed_in? %>
       <ul class="nav container">
-      <li class="nav-item col "><%= link_to root_path,:style=>"color:#18a2b8;" do %><i class="fas fa-home">ホーム</i><% end %></li>
+      <li class="nav-item col "><%= link_to root_path,:style=>"color:#2d566b;" do %><i class="fas fa-home">ホーム</i><% end %></li>
       <li class="nav-item col">
-        <%= link_to clients_client_path(current_client), :style=>"color:#18a2b8;" do %><i class="fas fa-user-tie">マイページ</i><% end %></li>
-      <li class="nav-item col"><%= link_to destroy_client_session_path, method: :delete, :style=>"color:#18a2b8;" do %><i class="fa fa-running">ログアウト</i><% end %></li>
+        <%= link_to clients_client_path(current_client), :style=>"color:#2d566b" do %><i class="fas fa-user-tie">マイページ</i><% end %></li>
+      <li class="nav-item col"><%= link_to destroy_client_session_path, method: :delete, :style=>"color:#2d566b" do %><i class="fa fa-running">ログアウト</i><% end %></li>
       <li class="nav-item">クライアントログインしてる</li>
       </ul>
     <% elsif admin_signed_in? %>

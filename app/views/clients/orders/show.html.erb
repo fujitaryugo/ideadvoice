@@ -103,8 +103,9 @@
 
 			<div class="row">
 				<% @ideas.each do |idea| %>
-				<div class="col-12 col-xl-6">
+				<div class="col-12">
 					<div class="card" style="margin:1% auto;">
+
 						<div class="card-header bg-success text-white">
 							<div class="row">
 							<div class="col-11">
@@ -113,19 +114,9 @@
 							<%= idea.user.name %>
 							<% end %>
 							</div>
-							<% if idea.awarded_by?(current_client) %>
-							  <div class="col-1">
-							    <%= link_to clients_client_order_idea_award_path(@order.client,@order,idea),method: :delete do %>
-							      <i class="fas fa-award fa-2x " aria-hidden="true" style="color: gold;"></i>
-							    <% end %>
-							  </div>
-							<% else %>
-							  <div class="col-1">
-							    <%= link_to clients_client_order_idea_awards_path(@order.client,@order,idea),:style=>"color:#777;text-decoration: none;", method: :post do %>
-							      <i class="fas fa-award fa-2x " aria-hidden="true"></i>
-							    <% end %>
-							  </div>
-							<% end %>
+						<div id="award_buttons_<%= idea.id %>">
+							<%= render partial: "clients/awards/award_order", locals: {idea: idea} %>
+						</div>
 						</div>
 						</div>
 						<div class="card-body">
@@ -133,13 +124,47 @@
 							<div class="card-text text-center" style="margin-bottom:2%;"><%= simple_format(idea.idea_text) %></div>
 							<div class="text-right font-italic text-muted small" >投稿日<%= idea.created_at.strftime('%Y年%m月%d日') %></div>
 						</div>
+						<div class="card-footer text-muted small text-right">
+							<span><%= idea.comments.count %>コメント</span>
+							<span><%= idea.favorites.count %>いいね</span>
+						</div>
 				    </div>
 				</div>
 				<% end %>
 			</div>
 			</div>
 		  </div>
-		  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab"></div>
+		  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab">
+		  	<% if @awards.blank? %>
+		  	<h1>MVPは選択されていません</h1>
+		  	<% else %>
+			  	<% @awards.each do |award| %>
+			  	<div class="col-12" style="margin:1% 0;">
+					<div class="card" style="border-color: #30c5bb;" >
+						<div class="card-header clearfix" style="background-color: #aeefdd; border-color: #30c5bb;" >
+							<%= attachment_image_tag award.idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
+							<%= award.idea.user.name %>
+							<span class="float-right" style=" color:#ffe000; "><i class="fas fa-award fa-3x"></i></span>
+						</div>
+						<div class="card-body">
+							<h3 class="card-title text-center" style="color:  #2d566b ;">
+							<%= award.idea.idea_title %>
+							</h3>
+							<div class="card-text text-center" style="margin-bottom:2%;"><%= simple_format(award.idea.idea_text) %></div>
+							<div class="text-right font-italic text-muted small" >
+								<label>投稿日</label>
+								<%= award.idea.created_at.strftime('%Y年%m月%d日') %>
+							</div>
+						</div>
+						<div class="card-footer text-muted small text-right">
+							<span><%= award.idea.comments.count %>コメント</span>
+							<span><%= award.idea.favorites.count %>いいね</span>
+						</div>
+					</div>
+		  		</div>
+			  	<% end %>
+		  	<% end %>
+		  </div>
 	</div>
 </div>
 

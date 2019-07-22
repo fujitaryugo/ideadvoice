@@ -17,6 +17,9 @@
  @import "font-awesome";
  @import "tempusdominus-bootstrap-4.css";
 
+.p{
+	color: #2d566b;
+}
 .modal-dialog{
 	width:200%;
 }
@@ -48,4 +51,7 @@ header{
 }
 .card-footer{
 	background-color: white;
+}
+.gold {
+background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03);
 }

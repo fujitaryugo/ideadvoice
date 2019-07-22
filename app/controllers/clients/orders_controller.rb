@@ -8,9 +8,9 @@ class Clients::OrdersController < ApplicationController
 	end
 
 	def show
-		@client_id
 		@order = Order.find(params[:id])
 		@ideas = @order.ideas
+		@awards = Award.where(idea: @ideas)
 	end
 
 	def update
@@ -30,6 +30,6 @@ class Clients::OrdersController < ApplicationController
 
 	private
 	def order_params
-		params.require(:order).permit(:order_title, :order_text, :order_image, :deadline, :reward_image, :reward_content, :client_id)
+		params.require(:order).permit( :order_title, :order_text, :order_image, :deadline, :reward_image, :reward_content, :client_id)
 	end
 end

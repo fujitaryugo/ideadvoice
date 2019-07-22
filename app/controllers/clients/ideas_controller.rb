@@ -1,7 +1,7 @@
 class Clients::IdeasController < ApplicationController
 	def show
 		@order = Order.find(params[:order_id])
-		@idea = @order.ideas.find(params[:id])
+		@idea = Idea.find(params[:id])
 		@comments = @idea.comments
 	end
 

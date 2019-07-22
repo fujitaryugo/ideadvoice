@@ -12,14 +12,15 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
-
 //= require jquery
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 //= require moment
 //= require moment/ja.js
 //= require tempusdominus-bootstrap-4.js
+//= require_tree ../../../app/assets/javascripts/.
+
 $(function () {
     $('#datetimepicker4').datetimepicker({
         format: 'L'
