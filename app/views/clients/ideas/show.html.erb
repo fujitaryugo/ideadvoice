@@ -3,7 +3,7 @@
 <div class="col-12">
 	<div class="card border-info rounded-pill" style="margin-bottom:3%;">
 		<div class="card-body">
-			<%= link_to clients_client_order_path(@order.client,@order),class: "text-info" do %>
+			<%= link_to clients_order_path(@order),class: "text-info" do %>
 			<h3 class="text-center" style="margin: 0;">依頼：<%= @order.order_title %></h3>
 			<% end %>
 		</div>

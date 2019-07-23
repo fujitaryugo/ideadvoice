@@ -1,12 +1,12 @@
 <% if @idea.awarded_by?(current_client) %>
   <div class="">
-    <%= link_to clients_client_order_idea_awards_path(@order.client_id,@order,@idea),method: :delete, remote: true do %>
+    <%= link_to clients_order_idea_awards_path(@order,@idea),method: :delete, remote: true do %>
       <i class="fas fa-award fa-3x " aria-hidden="true" style="color: gold;"></i>
     <% end %>
   </div>
 <% else %>
   <div>
-    <%= link_to clients_client_order_idea_awards_path(@order.client_id,@order,@idea), :style=>"color:#777;text-decoration: none;", method: :post, remote: true do %>
+    <%= link_to clients_order_idea_awards_path(@order,@idea), :style=>"color:#777;text-decoration: none;", method: :post, remote: true do %>
       <i class="fas fa-award fa-3x " aria-hidden="true"></i>
     <% end %>
   </div>

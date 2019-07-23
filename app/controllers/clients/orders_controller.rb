@@ -16,13 +16,13 @@ class Clients::OrdersController < ApplicationController
 	def update
 		@order = Order.find(params[:id])
 		@order.update(order_params)
-		redirect_to clients_client_order_path(params[:client_id],@order)
+		redirect_to clients_order_path(@order)
 	end
 
 	def destroy
 		@order = Order.find(params[:id])
 		@order.destroy
-		redirect_to clients_client_path(params[:client_id])
+		redirect_to clients_client_path(current_client.id)
 	end
 
 	def index
@@ -30,6 +30,6 @@ class Clients::OrdersController < ApplicationController
 
 	private
 	def order_params
-		params.require(:order).permit( :order_title, :order_text, :order_image, :deadline, :reward_image, :reward_content, :client_id)
+		params.require(:order).permit(:order_title, :order_text, :order_image, :deadline, :reward_image, :reward_content, :client_id)
 	end
 end

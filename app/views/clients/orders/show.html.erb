@@ -34,7 +34,7 @@
 					<div class="row">
 					<!--依頼編集モーダルボタン-->
 					<button type="button" class="btn btn-outline-primary col-2 offset-2" data-toggle="modal" data-target="#myModal">編集</button>
-					<%= link_to clients_client_order_path(@order.client_id),method: :delete,  class: "btn btn-outline-danger col-2 offset-4", "data-confirm" => "本当に消しますか？" do %>
+					<%= link_to clients_order_path(@order),method: :delete,  class: "btn btn-outline-danger col-2 offset-4", "data-confirm" => "本当に消しますか？" do %>
 						削除
 					<% end %>
 					</div>
@@ -55,7 +55,7 @@
 			        </button>
 			      </div>
 			      <div class="modal-body form">
-	        			<%= form_for @order, url:clients_client_order_path(@order.client_id ) do |f| %>
+	        			<%= form_for @order, url:clients_order_path(@order) do |f| %>
 	        		<div class="form-group">
 	        			<label >イメジ</label>
 						<%= f.attachment_field :order_image,class: "col" %>
@@ -109,7 +109,7 @@
 						<div class="card-header bg-success text-white">
 							<div class="row">
 							<div class="col-11">
-							<%= link_to clients_client_order_idea_path(@order.client_id,@order,idea.id),class: "text-white" do %>
+							<%= link_to clients_order_idea_path(@order,idea.id),class: "text-white" do %>
 							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg", size:'40x40',style:"border-radius: 50%;" %>
 							<%= idea.user.name %>
 							<% end %>

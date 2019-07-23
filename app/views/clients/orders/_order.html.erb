@@ -3,7 +3,7 @@
 	<div class="col-12 col-xl-6" style="margin:1% 0;">
 		<div class="card" >
 			<div class="card-header bg-info">
-				<%= link_to clients_client_order_path(@client.id,order.id) , :style=>"color:white;" do %>
+				<%= link_to clients_order_path(order.id) , :style=>"color:white;" do %>
 				<%= order.order_title %>
 				<% end %>
 			</div>

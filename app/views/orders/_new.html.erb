@@ -1,5 +1,5 @@
 <div style="margin-bottom: 5%">
-	<%= form_for @order, url:clients_client_orders_path(:client_id => @client.id ) do |f| %>
+	<%= form_for @order, url:clients_orders_path(:client_id => @client.id ) do |f| %>
 	<div class="form-group">
 	 <label class="text-info">依頼タイトル</label>
 	 <%= f.text_field :order_title,class: "col border border-info"  %>

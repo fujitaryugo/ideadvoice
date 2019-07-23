@@ -19,13 +19,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :update]
 	namespace :clients do
-	    resources :clients, only: [:show, :update] do
+	    resources :clients, only: [:show, :update]
 	  	resources :orders, only: [:create, :update, :destroy, :index, :show] do
 	  		resources :ideas, only: [:show] do
 	  			resource :awards, only: [:create, :destroy]
 	  		end
 	  	end
-	  end
   	end
 
   resources :clients, only: [:show]
