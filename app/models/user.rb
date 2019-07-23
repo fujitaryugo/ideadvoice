@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :ideas, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_one :presents
 
   validates :name,presence: true, length:{ in: 1..20}
   

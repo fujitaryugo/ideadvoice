@@ -5,6 +5,7 @@ class Client < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders, dependent: :destroy
   has_many :awards, dependent: :destroy
+  has_many :presents,dependent: :destroy
   attachment :client_image
 
   validates :group_name,presence: true, length:{ in: 1..50 }
