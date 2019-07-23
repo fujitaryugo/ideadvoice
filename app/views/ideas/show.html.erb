@@ -96,7 +96,6 @@
 								<% if current_user.id == comment.user_id %>
 									<%= link_to order_idea_comment_path(@order,@idea,comment),method: :delete,  class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に消しますか？" do %>削除<% end %>
 								<% end %><br>
-								
 							</div>
 						</div>
 						<% end %>

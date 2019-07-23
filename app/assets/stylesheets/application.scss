@@ -46,7 +46,7 @@ header{
 .under {
 	height: 3px;
 	background-color:#dcdcdc;
-	width: 70%;
+	width: 60%;
 	margin: 0 auto;
 }
 .card-footer{
@@ -54,4 +54,17 @@ header{
 }
 .gold {
 background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03);
+}
+.under-title{
+	border-bottom: solid 3px #fed9a0;
+	width: 60%;
+	margin: 0 auto;
+}
+.under-title2{
+	border-bottom: solid 3px #aeefdd;
+	width: 60%;
+	margin: 0 auto;
+}
+.tab-content {
+	min-height: 200px;
 }
