@@ -1,20 +1,20 @@
 class FavoritesController < ApplicationController
+	before_action :set_idea
 	def create
 		@idea = Idea.find(params[:idea_id])
 		@favorite = current_user.favorites.new(idea_id: @idea.id)
 		@favorite.save
-		redirect_to order_idea_path(@idea.order_id,@idea)
 	end
 
 	def destroy
 		@idea = Idea.find(params[:idea_id])
 		@favorite = current_user.favorites.find_by(idea_id: @idea.id)
 		@favorite.destroy
-		redirect_to order_idea_path(@idea.order_id,@idea)
 	end
 
 	private
-	def favorite_params
-		params.require(:favrite).permit(:user_id, :idea_id)
+	def set_idea
+		@idea = Idea.find(params[:idea_id])
+		@order = Order.find(params[:order_id])
 	end
 end

@@ -8,11 +8,11 @@
 
 				</div>
 				<div class="card-body text-center">
-					<h3 class="card-title text-center" style="color:  #2d566b;"><%= simple_format(@order.order_title) %></h3>
+					<h3 class="card-title" style="color:  #2d566b;"><%= simple_format(@order.order_title) %></h3>
 					<div class="under-title"></div>
-					<div class="card-text text-center" style="margin:2% 0;"><%= simple_format(@order.order_text) %></div>
+					<div class="card-text" style="margin:2% 0;"><%= simple_format(@order.order_text) %></div>
 					<div class="under-title"></div>
-					<strong class=" " style="margin:2% 0;">募集締切<%= @order.deadline.strftime('%Y年%m月%d日') %></strong>
+					<strong style="margin:2% 0;">募集締切<%= @order.deadline.strftime('%Y年%m月%d日') %></strong>
 					<div class="under-title"></div>
 				</div>
 				<div class="container">
@@ -27,7 +27,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+				</div>
 				<% if @order.client_id == current_client.id %>
 				<div class="card-footer container">
 					<div class="row">
@@ -140,6 +140,7 @@
 		  	<h1 class="text-center" style="color:#2d566b; height:50px;">MVPは選択されていません</h1>
 		  	</div>
 		  	<% else %>
+		  	<div id="snow">
 			  	<% @awards.each do |award| %>
 			  	<div class="col-12" style="margin:1% 0;">
 					<div class="card" style="margin:1% auto;border-color: #30c5bb;" >
@@ -167,7 +168,13 @@
 		  		</div>
 			  	<% end %>
 		  	<% end %>
+		 	</div>
 		  </div>
 	</div>
 </div>
+    <script>
+      $(function(){
+          $("#snow").snowfall();
+      })
+    </script>
 

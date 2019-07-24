@@ -9,8 +9,8 @@ class Clients::OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
-		@ideas = @order.ideas
-		@awards = Award.where(idea: @ideas)
+		@ideas = @order.ideas.reverse_order
+		@awards = Award.where(idea: @ideas).reverse_order
 	end
 
 	def update

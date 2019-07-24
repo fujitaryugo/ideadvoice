@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
 	before_action :authenticate_user!
   def show
   	@client = Client.find(params[:id])
-  	@orders = @client.orders
+  	@orders = @client.orders.reverse_order
   end
 
 

@@ -1,32 +1,31 @@
 <div class="container">
 	<div class="row" style="margin-bottom:5%;">
-		<div class="col-2 ">
+		<div class="col-11 col-offset-1  col-lg-2 ">
 			<%= attachment_image_tag @user, :user_image, :size => "100x100", fallback:"user_no_image_big.jpeg",style:"border-radius: 50%;"   %>
 		</div>
 		<div class="col row">
-			<div class= "font-weight-bold col-9"><%= @user.name %></div>
-			<div class="col-3">
+			<div class= "font-weight-bold col-9" style="margin-left:2%;"><%= @user.name %></div>
+			<div class="col-1">
 				<% if @user == current_user %>
 				<button type="button" class="btn" data-backdrop="static" data-toggle="modal" data-target="#myModal" style="border-color:#2d566b; color:#2d566b;">
 					<i class="fas fa-cogs"></i>
 				</button>
 				<% end %>
 			</div>
-			<div class="col-12"><%= @ideas.count %><br>投稿</div>
-			<div class="col-12"><%= @user.sex %> / <%= @user.age %> / <%= @user.location %> / <%= @user.job %></div>
+			<div class="col-12"  style="margin-left:2%;"><%= @user.sex %> / <%= @user.age %> / <%= @user.location %> / <%= @user.job %></div>
 		</div>
 	</div>
 			<!--編集モーダル-->
 			<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog modal-lg" role="document">
+			  <div class="modal-dialog modal-lg col" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h5 class="modal-title" id="exampleModalLabel">ユーザー情報編集</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-			          <span class="text-success" aria-hidden="true">&times;</span>
+			          <span aria-hidden="true" style="color:#2d566b;">&times;</span>
 			        </button>
 			      </div>
-			      <div class="modal-body ">
+			      <div class="modal-body col">
 	        			<%= form_for (@user)do |f| %>
 	        		<div class="form-group">
 	        			<label>プロフィール画像</label>
@@ -59,14 +58,14 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">閉じる</button>
-			        <%= f.submit "編集",class: "btn btn-outline-success" %>
+			        <%= f.submit "編集",class: "btn btn-pro text-white" %>
 			        <% end %>
 			      </div>
 			    </div>
 			  </div>
 			</div>
 		<!-- タブ部分 -->
-	<div class="col-12">
+	<div class="">
 		<ul id="myTab" class="nav nav-tabs" role="tablist">
 		  <li class="nav-item">
 		    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true" style="color: #2d566b;">投稿</a>
@@ -82,7 +81,8 @@
 		<!-- パネル部分 -->
 		<div id="myTabContent" class="tab-content mt-3">
 		  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
-			<div class="row">
+			<div class="row ">
+				<div class="col-12 text-center text-muted small"><p><%= @ideas.count %>投稿</p></div>
 				<% @ideas.each do |idea| %>
 				<div class="col-12" style="margin:1% 0;">
 					<div class="card" style="border-color: #30c5bb;" >
@@ -99,12 +99,12 @@
 								<% end %>
 							</h3>
 							<div class="card-text text-center" style="margin-bottom:2%;"><%= simple_format(idea.idea_text) %></div>
-							<div class="text-right text-muted small text-white">
+							<div class="text-right font-italic text-muted small ">
 								<label>投稿日</label>
 								<%= idea.created_at.strftime('%Y年%m月%d日') %>
 							</div>
 						</div>
-						<div class="card-footer text-muted small">
+						<div class="card-footer text-muted small text-right">
 							<span class=""><%= idea.comments.count %>コメント</span>
 							<span class=""><%= idea.favorites.count %>いいね</span>
 						</div>
@@ -115,6 +115,7 @@
 		  </div>
 		  <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
 		  	<div class="row">
+		  		<div class="col-12 text-center text-muted small"><p><%= @favorites.count %>いいね</p></div>
 		  		<% @favorites.each do |fav| %>
 		  		<div class="col-12" style="margin:1% 0;">
 					<div class="card" style="border-color: #30c5bb;" >
@@ -134,9 +135,9 @@
 								<%= fav.idea.created_at.strftime('%Y年%m月%d日') %>
 							</div>
 						</div>
-						<div class="card-footer text-muted small">
-							<span class=""><%= fav.idea.comments.count %>コメント</span>
-							<span class=""><%= fav.idea.favorites.count %>いいね</span>
+						<div class="card-footer text-muted small text-right">
+							<span><%= fav.idea.comments.count %>コメント</span>
+							<span><%= fav.idea.favorites.count %>いいね</span>
 						</div>
 					</div>
 		  		</div>
@@ -145,6 +146,7 @@
 		  </div>
 		  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab">
 		  	<div class="row">
+		  		<div class="col-12 text-center text-muted small"><p><%= @awards.count %>MVP</p></div>
 		  		<% @awards.each do |award| %>
 		  		<div class="col-12" style="margin:1% 0;">
 		  			<div class="card  rounded-pill" style="margin-bottom:1%; background-color: #fed9a0; border-color:#fd9900;">

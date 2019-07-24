@@ -14,7 +14,7 @@ class IdeasController < ApplicationController
 		@idea = Idea.find(params[:id])
 		@user = current_user.id
 		@comment = Comment.new
-		@comments = @idea.comments
+		@comments = @idea.comments.reverse_order
 		@user = current_user
 	end
 
