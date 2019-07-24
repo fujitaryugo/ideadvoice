@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 	  			resource :awards, only: [:create, :destroy]
 	  		end
 	  	end
-	  	resources :presents, only: [:new, :create]
+	  	resources :presents, only: [:create]
   	end
 
   resources :clients, only: [:show]

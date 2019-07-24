@@ -8,9 +8,9 @@ class Clients::PresentsController < ApplicationController
   	@idea = @present.idea
   	@idea.send_status = 1
   	@idea.save
-  	PresentMailer.present_send_mail(@present).deliver_now
+  	PresentMailer.present_send_mail(@present).deliver
   	flash[:notice] = "送信しました"
-  	binding.pry
+  	# binding.pry
   	redirect_to clients_order_path(@idea.order_id)
   end
 

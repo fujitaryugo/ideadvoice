@@ -5,8 +5,7 @@ class PresentMailer < ApplicationMailer
 		@user = @present.user
 		@idea = @present.idea
 		mail(
-			from: 'advoice111@gmail.com',
-			to: 'user.email',
+			to: @user.email,
 			subject: 'MVP受賞のお知らせ'
 			)
 	end
