@@ -69,3 +69,8 @@ gem "refile-mini_magick"
 gem 'kaminari','~> 1.1.1'
 gem 'ransack'
 gem 'pry-rails'
+gem 'pry-nav'
+gem "bootstrap4-datetime-picker-rails"
+gem 'momentjs-rails'
+gem "font-awesome-rails"
+gem 'rinku'

@@ -6,10 +6,66 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="header-image">
+<h1 class="god">GODOFTRAIN</h1>
+    <% if user_signed_in? %>
+      <ul class="nav container">
+      <li class="nav-item col"><%= link_to root_path, :style=>"color:#2d566b;" do %><i class="fas fa-home">ホーム</i><% end %></li>
+      <li class="nav-item col"><%= link_to orders_path, :style=>"color:#2d566b;" do %><i class="fas fa-rocket">依頼一覧</i><% end %></li>
+      <li class="nav-item col"><%= link_to user_path(current_user), :style=>"color:#2d566b;" do %>
+        <i class="fa fa-user">マイページ</i><% end %></li>
+      <li class="nav-item col"><%= link_to destroy_user_session_path, method: :delete , :style=>"color:#2d566b;" do %>
+        <i class="fas fa-running">ログアウト</i><% end %></li>
+      <li class="nav-item col">ユーザーログインしてる</li>
+      </ul>
+    <% elsif client_signed_in? %>
+      <ul class="nav container">
+      <li class="nav-item col "><%= link_to root_path,:style=>"color:#2d566b;" do %><i class="fas fa-home">ホーム</i><% end %></li>
+      <li class="nav-item col">
+        <%= link_to clients_client_path(current_client), :style=>"color:#2d566b" do %><i class="fas fa-user-tie">マイページ</i><% end %></li>
+      <li class="nav-item col"><%= link_to destroy_client_session_path, method: :delete, :style=>"color:#2d566b" do %><i class="fa fa-running">ログアウト</i><% end %></li>
+      <li class="nav-item">クライアントログインしてる</li>
+      </ul>
+    <% elsif admin_signed_in? %>
+      <ul class="nav container">
+      <li class="nav-item col"><%= link_to root_path do %>ホーム<% end %></li>
+      <li class="nav-item col"><%= link_to orders_path do %>依頼一覧<% end %></li>
+      <li class="nav-item col">マイページ</li>
+      <li class="nav-item col"><i class="fa fa-running"></i>ログアウト</li>
+      <li class="nav-item">アドミン</li>
+      </ul>
+    <% else %>
+      <ul class="nav nav-bar container">
+      <li class="nav-item col"><%= link_to root_path do %><i class="fas fa-home">ホーム</i><% end %></li>
+      <li class="nav-item col"><%= link_to orders_path do %><i class="fas fa-rocket">依頼一覧</i><% end %></li>
+      <li class="nav-item col">
+        <span class="text-muted small">アカウントをお持ちの方</span><br>
+        <%= link_to new_user_session_path do %><i class="fas fa-sign-in-alt">ログイン</i><% end %>
+      </li>
+      <li class="nav-item col"><%= link_to new_user_registration_path do %><i class="fas fa-key">新規登録</i><% end %></li>
+      <li class="nav-item col">
+        <span class="text-muted small">アカウントをお持ちの方</span><br>
+        <%= link_to new_client_session_path do %><i class="fas fa-sign-in-alt">ログイン</i><% end %>
+      </li>
+      <li class="nav-item col"><%= link_to new_client_registration_path do %><i class="fas fa-key">新規登録</i><% end %></li>
+
+      <li class="nav-item col">誰もログインしてない</li>
+      </ul>
+    <% end %>
+</header>
+<div class="bottomline"></div>
+    <div class="backimage">
+      <div class="box">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
+

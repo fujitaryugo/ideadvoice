@@ -14,3 +14,57 @@
  *= require_self
  */
  @import "bootstrap";
+ @import "font-awesome";
+ @import "tempusdominus-bootstrap-4.css";
+
+.p{
+	color: #2d566b;
+}
+.modal-dialog{
+	width:200%;
+}
+.modal-content{
+  max-width: 300%;
+}
+.c{
+	background:  image-url("sky4.jpg") ;
+	background-size: cover;
+	opacity: 1;
+}
+header{
+	background-color: white;
+	padding-bottom: 2%;
+}
+.bottomline{
+	height: 1px;
+	background-color:#dcdcdc;
+}
+.box{
+	background-color: #f9fbfe;
+	padding: 3% 0;
+}
+.under {
+	height: 3px;
+	background-color:#dcdcdc;
+	width: 60%;
+	margin: 0 auto;
+}
+.card-footer{
+	background-color: white;
+}
+.gold {
+background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03);
+}
+.under-title{
+	border-bottom: solid 3px #fed9a0;
+	width: 60%;
+	margin: 0 auto;
+}
+.under-title2{
+	border-bottom: solid 3px #aeefdd;
+	width: 60%;
+	margin: 0 auto;
+}
+.tab-content {
+	min-height: 200px;
+}

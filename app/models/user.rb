@@ -3,7 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  attachment :user_image
+  has_many :ideas, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_one :presents
 
+  validates :name,presence: true, length:{ in: 1..20}
+  
   enum sex: {
   	"性別未選択": 0,"男性": 1,"女性": 2,"無回答": 3
   }

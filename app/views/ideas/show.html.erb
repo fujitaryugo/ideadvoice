@@ -1,0 +1,107 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="card  rounded-pill" style="margin-bottom:3%; background-color: #fed9a0; border-color:#fd9900;">
+				<div class="card-body">
+					<%= link_to order_path(@order),:style=>"color:  #2d566b ;text-decoration:none;" do %>
+					<h3 class="text-center" style="margin: 0;"><%= @order.order_title %></h3>
+					<% end %>
+				</div>
+		    </div>
+		</div>
+		<div class="col-12">
+			<div class="card" style="margin:1% auto; border-color: #30c5bb;">
+				<div class="card-header" style="background-color: #aeefdd; border-color: #30c5bb;" >
+					<%= link_to user_path(@idea.user),:style=>"color:  #2d566b ; text-decoration: none;" do %>
+					<%= attachment_image_tag @idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
+					<%= @idea.user.name %>
+					<% end %>
+				</div>
+				<div class="card-body">
+					<h3 class="card-title text-center"><%= @idea.idea_title %></h3>
+					<div class="card-text text-center" style="margin-bottom:2%;"><%= @idea.idea_text %></div>
+				</div>
+				<div class="card-footer">
+					<div class="row">
+						<div class="text-right font-italic text-muted small offset-1" style="text-align: center;" >投稿日<%= @idea.created_at.strftime('%Y年%m月%d日') %>
+						</div>
+						<div class="offset-8">
+							<%= render "favorites/favorites" %>
+						</div>
+					</div>
+				</div>
+				<% if @idea.user_id == current_user.id %>
+				<div class="card-footer">
+					<button type="button" class="col-3 offset-2 btn btn-outline-primary" data-backdrop="static" data-toggle="modal" data-target="#myModal">編集</button>
+						<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  <div class="modal-dialog modal-lg" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLabel">ユーザー情報編集</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+				        			<%= form_for @idea ,url:order_idea_path(@order,@idea) do |f| %>
+				        		<div class="form-group">
+				        			<label>タイトル</label>
+									<%= f.text_area :idea_title, class: "col" %>
+								</div>
+								<div class="form-group">
+									<label>内容</label>
+									<%= f.text_area :idea_text,class: "col" %>
+								</div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">閉じる</button>
+						        <%= f.submit "編集",class: "btn btn-outline-primary" %>
+						        <% end %>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					<%= link_to order_idea_path(@order,@idea),method: :delete,  class: "btn btn-outline-danger col-3 offset-2", "data-confirm" => "本当に消しますか？" do %>
+						削除
+					<% end %>
+				</div>
+				<% end %>
+				<div class="card-fotter container"  style="margin:2%;">
+					<div class="row">
+						<div class="col-1">
+							<%= attachment_image_tag @user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;" %>
+						</div>
+						<div class="formgroup col-10">
+							<%= form_for @comment,url:order_idea_comments_path(@order,@idea) do |f| %>
+							<%= f.text_area :comment_text, class: "form-control-lg",style:"border-color:#2d566b; width:100%;" ,placeholder:"コメント...",id:"comment" %>
+						</div>
+
+					</div>
+					<p style="color:#2d566b;">
+						<%= @idea.comments.count %>件のコメント
+						<%= f.submit "コメント",class: "btn offset-9" ,style: " color:#2d566b; border-color:#2d566b;"%>
+						<% end %>
+					</p>
+				</div>
+				<div class="card-fotter container">
+					<div class="">
+						<% @comments.each do |comment| %>
+						<div class="col" style="margin-bottom: 1%; ">
+							<div >
+								<%= attachment_image_tag comment.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",size: "40x40",style:"border-radius: 50%;" %>
+								<%= comment.user.name %>
+							</div>
+							<div class="offset-1">
+								<%= comment.comment_text %><br>
+								<% if current_user.id == comment.user_id %>
+									<%= link_to order_idea_comment_path(@order,@idea,comment),method: :delete,  class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に消しますか？" do %>削除<% end %>
+								<% end %><br>
+							</div>
+						</div>
+						<% end %>
+					</div>
+				</div>
+		    </div>
+		</div>
+	</div>
+</div>

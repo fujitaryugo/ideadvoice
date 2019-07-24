@@ -1,0 +1,36 @@
+<div class="container">
+<div class="row">
+<div class="col border border-info rounded" style="margin-top: 5%;">
+<h2 class="text-center text-info" style="margin-top: 5%;">ログイン</h2>
+<div  style="margin: 5% auto;">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-group row" style="margin-top: 5%;">
+    <label class="text-left text-info col-4 offset-2">Eメール</label>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "border border-info text-info" %>
+  </div>
+
+  <div class="form-group row">
+    <label class="text-left text-info col-4 offset-2">パスワード</label>
+    <%= f.password_field :password, autocomplete: "current-password",class: "border border-info text-info" %>
+  </div>
+
+ <div class="form-group text-center text-info">
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me ,class: "text-info"%>
+      <%= f.label :remember_me ,class: "text-info" %>
+    </div>
+  <% end %>
+</div>
+
+  <div class="actions">
+    <%= f.submit "ログイン" ,class: "btn btn-outline-info rounded-pill col-8 offset-2"%>
+  </div>
+<% end %>
+</div>
+ <div class="col-4 offset-4 text-center  rounded-pill" style="margin-bottom: 5%;">
+  <%= render "clients/shared/links" %>
+ </div>
+</div>
+</div>
+</div>

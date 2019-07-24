@@ -1,0 +1,58 @@
+<h1>Clients#show</h1>
+<p>Find me in app/views/clients/show.html.erb</p>
+<div class="container">
+	<div class="row" style="margin-bottom:2%;">
+		<div class="col-2">
+			<%= attachment_image_tag @client, :client_image, :size => "100x100", fallback:"client_no_image_big.jpeg",style:"border-radius: 50%;" %>
+		</div>
+		<div class="col-8">
+			<strong class="strong"><%= @client.group_name %></strong>
+			<p><%= @client.introduction %></p>
+			<a href='<%= @client.client_url %>' target="_blank"><%= @client.client_url %></a>
+		</div>
+	</div>
+		<div>
+			<!-- タブ部分 -->
+			<ul id="myTab" class="nav nav-tabs" role="tablist">
+			  <li class="nav-item">
+			    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
+			  </li>
+			  <li class="nav-item">
+			    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">おおお</a>
+			  </li>
+			</ul>
+
+			<!-- パネル部分 -->
+			<div id="myTabContent" class="tab-content mt-3">
+			  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
+				<div class="row">
+					<% @orders.each do |order| %>
+					<div class="col-12 col-xl-6" style="margin:1% 0;">
+						<div class="card" >
+							<div class="card-header" style="background-color: #eaf4ff">
+								<%= link_to order_path(order) do %>
+								<%= order.order_title %>
+								<% end %>
+							</div>
+							<div class="card-body">
+								<div class="d-inline-block text-truncate" style="max-width: 500px;"><%= order.order_text %></div>
+							</div>
+							<div class="card-body">
+								<label >締め切り日</label>
+								<%= order.deadline.strftime('%Y年%m月%d日') %>
+							</div>
+							<div class="card-footer text-muted small" style="background-color: #eaf4ff">
+								<div class="row">
+									<div class="col-5 offset-7"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			  </div>
+			  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab">
+			  </div>
+			</div>
+		</div>
+</div>
