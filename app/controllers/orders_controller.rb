@@ -1,13 +1,14 @@
 class OrdersController < ApplicationController
 	def index
-		@orders = Order.all
+		@orders = Order.all.reverse_order
 	end
 
 	def show
 		@order = Order.find(params[:id])
   	    @idea = Idea.new
-  	    @ideas = @order.ideas
-  	    @user = @idea.user
+  	    @ideas = @order.ideas.reverse_order
+  	    @user = current_user
+  	    @awards = Award.where(idea: @ideas).reverse_order
 	end
 
 	private

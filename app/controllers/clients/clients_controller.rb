@@ -3,7 +3,7 @@ class Clients::ClientsController < ApplicationController
   def show
   	@client = Client.find(params[:id])
     @order = Order.new
-  	@orders = @client.orders
+  	@orders = @client.orders.reverse_order
   end
 
   def update

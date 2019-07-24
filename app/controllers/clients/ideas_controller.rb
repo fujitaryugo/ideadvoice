@@ -2,7 +2,7 @@ class Clients::IdeasController < ApplicationController
 	def show
 		@order = Order.find(params[:order_id])
 		@idea = Idea.find(params[:id])
-		@comments = @idea.comments
+		@comments = @idea.comments.reverse_order
 		@present = Present.new
 	end
 

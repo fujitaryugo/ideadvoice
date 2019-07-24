@@ -49,6 +49,9 @@ header{
 	width: 60%;
 	margin: 0 auto;
 }
+.card-header{
+	background-color: white;
+}
 .card-footer{
 	background-color: white;
 }
@@ -67,4 +70,8 @@ background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE0
 }
 .tab-content {
 	min-height: 200px;
+}
+.btn-pro {
+	color:#2d566b;
+	background-color: #2d566b;
 }
