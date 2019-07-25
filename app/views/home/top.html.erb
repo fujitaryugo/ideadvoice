@@ -1,49 +1,28 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <!-- インジケータの設定 -->
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" style="background-color:#2d566b;"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1" style="background-color:#2d566b;"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2" style="background-color:#2d566b;"></li>
   </ol>
   <!-- スライドさせる画像の設定 -->
-  <div class="carousel-inner" style="height:100px;">
-    <div class="carousel-item active">
-    	<h1 class="text-success text-center">ようこそ</h1>
+  <div class="carousel-inner">
+    <div class="carousel-item active top-1" >
+<!--       <img src="<%= asset_path "sibuya.jpg" %>" alt="responsive image" class="d-block img-fluid"> -->
     </div><!-- /.carousel-item -->
-    <div class="carousel-item">
-        <h1 class="text-success text-center">Home#top</h1>
+    <div class="carousel-item top-2">
+<!--       <img src="<%= asset_path "back2.jpg" %>" alt="responsive image" class="d-block img-fluid"> -->
     </div><!-- /.carousel-item -->
-    <div class="carousel-item">
-    	<h1 class="text-success text-center">ああああ</h1>
+    <div class="carousel-item top-3">
+<!--     	<img src="<%= asset_path "sibuya.jpg" %>" alt="responsive image" class="d-block img-fluid"> -->
     </div><!-- /.carousel-item -->
   </div><!-- /.carousel-inner -->
   <!-- スライドコントロールの設定 -->
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <h1 class="text-danger"><i class="fas fa-angle-double-left"></i></h1>
+    <h1 style="color:#2d566b;"><i class="fas fa-angle-double-left"></i></h1>
   </a>
   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <h1 class="text-danger"><i class="fas fa-angle-double-right"></i></h1>
+    <h1  style="color:#2d566b;"><i class="fas fa-angle-double-right"></i></h1>
   </a>
 </div><!-- /.carousel -->
 
-
-
-
-
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
-<h1>アプリの説明入れる</h1>
-<div>
-	<%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %><br>
-	<%= link_to "依頼者ログアウト", destroy_client_session_path, method: :delete %>
-</div>
-<div>
-	<%= link_to " ユーザーログイン", new_user_session_path %><br>
-	<%= link_to " 依頼者ログイン", new_client_session_path %>
-</div>
-<input type="date">
-<h1>Ajax#index</h1>
-<p id="hoge">真っ赤だな</p>
-<script>
-  $("#hoge").css("color","red")
-</script>

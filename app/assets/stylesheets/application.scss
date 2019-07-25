@@ -17,6 +17,43 @@
  @import "font-awesome";
  @import "tempusdominus-bootstrap-4.css";
 
+.carousel-item .img-fluid {
+  width:100%;
+  height:auto;
+}
+
+.carousel-item{
+  height: auto;
+}
+
+.carousel-item a {
+  display: block;
+  width:100%;
+}
+
+.carousel-item .show-image {
+  display: block;
+  width:100%;
+}
+
+.top-1{
+  background-image: url("order.jpg");
+  height: 400px;
+  background-size: center;
+  background-position:center;
+}
+.top-2{
+  background-image: url("back2.jpg");
+  height: 400px;
+  background-size: cover;
+  background-position:bottom;
+}
+.top-3{
+  background-image: url("ki.jpg");
+  height: 400px;
+  background-size: cover;
+}
+
 .p{
 	color: #2d566b;
 }
@@ -39,11 +76,11 @@ header{
 	height: 1px;
 	background-color:#dcdcdc;
 }
-.box{
+/*.box{
 	background-color: #f9fbfe;
 	padding: 3% 0;
 }
-.under {
+*/.under {
 	height: 3px;
 	background-color:#dcdcdc;
 	width: 60%;

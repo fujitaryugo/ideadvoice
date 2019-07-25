@@ -4,14 +4,19 @@ class Clients::PresentsController < ApplicationController
 
   def create
   	@present = Present.new(present_params)
-  	@present.save
-  	@idea = @present.idea
-  	@idea.send_status = 1
-  	@idea.save
-  	PresentMailer.present_send_mail(@present).deliver
-  	flash[:notice] = "送信しました"
-  	# binding.pry
-  	redirect_to clients_order_path(@idea.order_id)
+  	if@present.save
+    	@idea = @present.idea
+    	@idea.send_status = 1
+    	@idea.save
+    	PresentMailer.present_send_mail(@present).deliver
+    	flash[:notice] = "送信しました！"
+    	# binding.pry
+    	redirect_to clients_order_path(@idea.order_id)
+    else
+      @idea = @present.idea
+      flash[:alert] = "送信に失敗しました！"
+      redirect_to clients_order_idea_path(@idea.order_id,@idea)
+    end
   end
 
   private

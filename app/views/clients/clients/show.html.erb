@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row" style="margin-bottom:2%;">
 		<div class="col-2">
 			<%= attachment_image_tag @client, :client_image, :fill,100,100, fallback:"client_no_image_big.jpeg", size:'100x100',style:"border-radius: 50%;" %>
@@ -77,9 +77,6 @@
 			    <a href="#profile" id="profile-tab" class="nav-link text-info" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">依頼投稿</a>
 			  </li>
 			  <% end %>
-			  <li class="nav-item">
-			    <a href="#contact" id="contact-tab" class="nav-link text-info" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">おおお</a>
-			  </li>
 			</ul>
 
 			<!-- パネル部分 -->
@@ -89,8 +86,6 @@
 			  </div>
 			  <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
 			  	<%= render 'orders/new' %>
-			  </div>
-			  <div id="contact" class="tab-pane" role="tabpanel" aria-labelledby="contact-tab">
 			  </div>
 			</div>
 		</div>

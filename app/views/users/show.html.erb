@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row" style="margin-bottom:5%;">
-		<div class="col-11 col-offset-1  col-lg-2 ">
+		<div class="col-2">
 			<%= attachment_image_tag @user, :user_image, :size => "100x100", fallback:"user_no_image_big.jpeg",style:"border-radius: 50%;"   %>
 		</div>
 		<div class="col row">
@@ -84,7 +84,7 @@
 			<div class="row ">
 				<div class="col-12 text-center text-muted small"><p><%= @ideas.count %>投稿</p></div>
 				<% @ideas.each do |idea| %>
-				<div class="col-12" style="margin:1% 0;">
+				<div class="col-12 col-lg-4" style="margin:1% 0;">
 					<div class="card" style="border-color: #30c5bb;" >
 						<div class="card-header"style="background-color: #aeefdd; border-color: #30c5bb;" >
 							<div style="color:  #2d566b ;">
@@ -97,8 +97,9 @@
 								<%= link_to order_idea_path(idea.order_id,idea),:style=>"color:  #2d566b ; text-decoration: none;" do %>
 								<%= idea.idea_title %>
 								<% end %>
+							<div class="under-title2"></div>
 							</h3>
-							<div class="card-text text-center" style="margin-bottom:2%;"><%= simple_format(idea.idea_text) %></div>
+							<div class="card-text text-center" style="margin:2%;"><%= simple_format(idea.idea_text) %></div>
 							<div class="text-right font-italic text-muted small ">
 								<label>投稿日</label>
 								<%= idea.created_at.strftime('%Y年%m月%d日') %>
@@ -129,7 +130,8 @@
 							<h3 class="card-title text-center">
 							<%= link_to order_idea_path(fav.idea.order_id,fav.idea),:style=>"color:  #2d566b ; text-decoration: none;" do %><%= fav.idea.idea_title %><% end %>
 							</h3>
-							<div class="card-text text-center" style="margin-bottom:2%;"><%= simple_format(fav.idea.idea_text) %></div>
+							<div class="under-title2"></div>
+							<div class="card-text text-center" style="margin:2%;"><%= simple_format(fav.idea.idea_text) %></div>
 							<div class="text-right font-italic text-muted small" >
 								<label>投稿日</label>
 								<%= fav.idea.created_at.strftime('%Y年%m月%d日') %>
@@ -165,7 +167,8 @@
 							<h3 class="card-title text-center">
 							<%= link_to order_idea_path(award.idea.order_id,award.idea),:style=>"color:  #2d566b ; text-decoration: none;" do %><%= award.idea.idea_title %><% end %>
 							</h3>
-							<div class="card-text text-center" style="margin-bottom:2%;"><%= simple_format(award.idea.idea_text) %></div>
+							<div class="under-title2"></div>
+							<div class="card-text text-center" style="margin:2%;"><%= simple_format(award.idea.idea_text) %></div>
 							<div class="text-right font-italic text-muted small" >
 								<label>投稿日</label>
 								<%= award.idea.created_at.strftime('%Y年%m月%d日') %>

@@ -14,7 +14,7 @@
 
   <body>
     <header class="header-image">
-<h1 class="god">GODOFTRAIN</h1>
+<h1 class="god">Adovoice</h1>
     <% if user_signed_in? %>
       <ul class="nav container">
       <li class="nav-item col"><%= link_to root_path, :style=>"color:#2d566b;" do %><i class="fas fa-home">ホーム</i><% end %></li>
@@ -61,6 +61,24 @@
     <% end %>
 </header>
 <div class="bottomline"></div>
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">close</span>
+      </button>
+      <%= notice %>
+    </div>
+    <% end %>
+    <% if alert %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">close</span>
+      </button>
+      <%= alert %>
+    </div>
+    <% end %>
     <div class="backimage">
       <div class="box">
         <%= yield %>
@@ -68,8 +86,3 @@
     </div>
   </body>
 </html>
-    <script>
-      $(function(){
-          $("#snow").snowfall();
-      })
-    </script>

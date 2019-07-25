@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container-fluid">
 	<div class="row">
 	<div class="col-xl-12">
 		<div class="card" style="margin:1% auto; border-color:#fd9900;">
@@ -15,11 +15,11 @@
 					<%= simple_format(@order.order_text) %>
 				</div>
 				<div class="under-title"></div>
-				<strong style="margin:2% 0;">募集締切<%= @order.deadline %></strong>
+				<strong style="margin:2% 0;">募集締切<%= @order.deadline.strftime('%Y年%m月%d日') %></strong>
 				<div class="under-title"></div>
 			</div>
 
-			<div class="container">
+			<div class="container-fluid">
 			<div class="card-body row">
 				<div class="col-6 text-center">
 					<%= attachment_image_tag @order, :order_image, :fill,200,200, fallback:"no_image.jpeg", size:'200x200' %>
@@ -35,7 +35,9 @@
 	    </div>
 	</div>
 	</div>
-
+	<% if @order.deadline < Date.today %>
+		<h2 class="text-center" style="color: #2d566b;">募集は締め切りました<br>投稿ありがとうございました！</h2>
+	<% end %>
 	<!--タブ-->
 	<ul id="myTab" class="nav nav-tabs" role="tablist">
 	  <li class="nav-item">
@@ -48,14 +50,16 @@
 	<!--パネル-->
 	<div id="myTabContent" class="tab-content mt-3">
 		  <div id="home" class="tab-pane active" role="tabpanel" aria-labelledby="home-tab">
-			<div class="container">
+			<div class="container-fluid">
+				<% if @order.deadline > Date.today %>
 				<div class="col-12">
 				<div class="card "  style="margin:1% auto;border-color:#30c5bb;">
 				  	<%= form_for @idea, url:order_ideas_path(order_id: @order) do |f| %>
 				  	<div class="card-header" style="border-color:  #30c5bb; background-color:  #aeefdd;">
+				  	<% if user_signed_in? %>
 						<%= attachment_image_tag @user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",size: "40x40",style:"border-radius: 50%; color: white;" %>
 						<%= @user.name %>
-
+					<% end %>
 				  	</div>
 				  	<div class="card-body text-center" style="margin-bottom:1%;">
 				  		<div class="row">
@@ -72,6 +76,7 @@
 				  	<% end %>
 				</div>
 				</div>
+				<% end %>
 				<div class="under" style="margin:5% auto;"></div>
 				<% @ideas.each do |idea| %>
 				<div class="col-12">
@@ -80,9 +85,7 @@
 						<%= link_to order_idea_path(idea.order_id,idea),:style=>"color: #2d566b;text-decoration: none;" do %>
 							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",size: "40x40",style:"border-radius: 50%; color: white;" %>
 							<%= idea.user.name %>
-					<div class="float-right "id="favorite_buttons_<%= idea.id %>">
-						<%= render partial: "favorites/favorites_order", locals: {idea: idea} %>
-					</div>
+
 						<% end %>
 						</div>
 						<div class="card-body">
@@ -93,7 +96,13 @@
 						</div>
 						<div class="card-footer text-muted small text-right">
 							<span class=""><%= idea.comments.count %>コメント</span>
+							<% if user_signed_in? %>
+							<div class="float-right "id="favorite_buttons_<%= idea.id %>">
+								<%= render partial: "favorites/favorites_order", locals: {idea: idea} %>
+							</div>
+							<% else %>
 							<span class=""><%= idea.favorites.count %>いいね</span>
+							<% end %>
 						</div>
 				    </div>
 				</div>
