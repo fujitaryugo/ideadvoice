@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid space">
 	<div class="row" style="margin-bottom:2%;">
 		<div class="col-2">
 			<%= attachment_image_tag @client, :client_image, :fill,100,100, fallback:"client_no_image_big.jpeg", size:'100x100',style:"border-radius: 50%;" %>
@@ -10,7 +10,7 @@
 		</div>
 		<div class="col">
 			<% if @client == current_client %>
-			<button type="button" class="btn btn-outline-info" data-backdrop="static"  data-toggle="modal" data-target="#myModal">
+			<button type="button" class="btn btn-pro text-white" data-backdrop="static"  data-toggle="modal" data-target="#myModal">
 				<i class="fas fa-cogs"></i>
 			</button>
 			<% end %>
@@ -19,47 +19,47 @@
 			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title text-info" id="exampleModalLabel">ユーザー情報編集</h5>
+			        <h5 class="modal-title" id="exampleModalLabel">ユーザー情報編集</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
 			      <div class="modal-body">
 						 <%= form_for @client, url:clients_client_path(:client_id => @client.id ) do |f| %>
-						  <label class="text-info">画像</label>
+						  <label>画像</label>
 						  <%= f.attachment_field :client_image %>
 						  <div class="form-group">
-						    <label class="text-info">団体名</label>
-						    <%= f.text_field :group_name, class: "col border border-info" %>
+						    <label>団体名</label>
+						    <%= f.text_field :group_name, class: "col" %>
 						  </div>
 						  <div class="form-group">
-						    <label class="text-info">担当者姓</label>
-						    <%= f.text_field :last_name, class: "col border border-info" %>
+						    <label>担当者姓</label>
+						    <%= f.text_field :last_name, class: "col" %>
 						  </div>
 						  <div class="form-group">
-						    <label class="text-info">担当者名</label>
-						    <%= f.text_field :first_name, class: "col border border-info" %>
+						    <label >担当者名</label>
+						    <%= f.text_field :first_name, class: "col" %>
 						  </div>
 						  <div class="form-group">
-						    <label class="text-info">電話番号</label>
-						    <%= f.text_field :phone_number, class: "col border border-info" %>
+						    <label>電話番号</label>
+						    <%= f.text_field :phone_number, class: "col" %>
 						  </div>
 						  <div class="form-group">
-						    <label class="text-info">メールアドレス</label>
-						    <%= f.text_field :email, class: "col border border-info" %>
+						    <label>メールアドレス</label>
+						    <%= f.email_field :email, class: "col" %>
 						  </div>
 						  <div class="form-group">
-						    <label class="text-info">団体URL</label>
-						    <%= f.text_field :client_url, class: "col border border-info" %>
+						    <label>団体URL</label>
+						    <%= f.text_field :client_url, class: "col" %>
 						  </div>
 						  <div class="form-group">
-						    <label class="text-info">紹介文</label>
-						    <%= f.text_area :introduction, class: "col border border-info" %>
+						    <label >紹介文</label>
+						    <%= f.text_area :introduction, class: "col" %>
 						  </div>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-			        <%= f.submit "編集",class: "btn btn-info" %>
+			        <%= f.submit "編集",class: "btn btn-success" %>
 			        <% end %>
 			      </div>
 			    </div>
@@ -70,11 +70,11 @@
 			<!-- タブ部分 -->
 			<ul id="myTab" class="nav nav-tabs" role="tablist">
 			  <li class="nav-item">
-			    <a href="#home" id="home-tab" class="nav-link active text-info" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">投稿一覧</a>
+			    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true" style="color:#2d566b;">投稿一覧</a>
 			  </li>
 			  <% if @client == current_client %>
 			  <li class="nav-item">
-			    <a href="#profile" id="profile-tab" class="nav-link text-info" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">依頼投稿</a>
+			    <a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false" style="color:#2d566b;">依頼投稿</a>
 			  </li>
 			  <% end %>
 			</ul>
@@ -85,7 +85,7 @@
 			  	<%= render 'clients/orders/order'%>
 			  </div>
 			  <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
-			  	<%= render 'orders/new' %>
+			  	<%= render 'clients/orders/new' %>
 			  </div>
 			</div>
 		</div>

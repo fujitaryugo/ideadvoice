@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<div class="row">
+	<div class="row space">
 		<div class="col-12">
 			<div class="card  rounded-pill" style="margin-bottom:3%; background-color: #fed9a0; border-color:#fd9900;">
 				<div class="card-body">
@@ -67,22 +67,25 @@
 					<% end %>
 				</div>
 				<% end %>
-				<div class="card-fotter container"  style="margin:2%;">
+				<div class="card-fotter"  style="margin:2%;">
 					<div class="row">
-						<div class="col-1">
+						<div class="col-1 offset-1">
 							<%= attachment_image_tag @user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;" %>
 						</div>
-						<div class="formgroup col-10">
+						<div class="formgroup col-8">
 							<%= form_for @comment,url:order_idea_comments_path(@order,@idea) do |f| %>
 							<%= f.text_area :comment_text, class: "form-control-lg",style:"border-color:#2d566b; width:100%;" ,placeholder:"コメント...",id:"comment" %>
 						</div>
+						<div class="col-2">
+						<%= f.submit "コメント",class: "btn" ,style: " color:#2d566b; border-color:#2d566b;"%>
+						<% end %>
+						</div>
 
 					</div>
-					<p style="color:#2d566b;">
+					<div class="row" style="color:#2d566b;">
 						<%= @idea.comments.count %>件のコメント
-						<%= f.submit "コメント",class: "btn offset-9" ,style: " color:#2d566b; border-color:#2d566b;"%>
-						<% end %>
-					</p>
+
+					</div>
 				</div>
 				<div class="card-fotter container">
 					<div class="">

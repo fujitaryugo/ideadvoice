@@ -70,7 +70,6 @@
 }
 header{
 	background-color: white;
-	padding-bottom: 2%;
 }
 .bottomline{
 	height: 1px;
@@ -79,8 +78,11 @@ header{
 /*.box{
 	background-color: #f9fbfe;
 	padding: 3% 0;
+}*/
+.space{
+	margin-top:3%;
 }
-*/.under {
+.under {
 	height: 3px;
 	background-color:#dcdcdc;
 	width: 60%;
@@ -111,4 +113,16 @@ background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE0
 .btn-pro {
 	color:#2d566b;
 	background-color: #2d566b;
+}
+/*文字紺色*/
+.t {
+	color: #2d566b;
+}
+/*user濃い青枠*/
+.u1 {
+	border-color: #30c5bb;
+}
+/*user薄い青背景*/
+.u2{
+	background-color: #aeefdd;
 }

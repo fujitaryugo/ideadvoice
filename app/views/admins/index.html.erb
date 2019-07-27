@@ -1,0 +1,22 @@
+<div class="container">
+<div class="row">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>
+          <%= link_to admins_clients_path,class: "nav-item nav-link" do %>依頼者一覧<% end %>
+        </th>
+        <td>
+          <%= link_to admins_users_path,class: "nav-item nav-link" do %>ユーザー一覧<% end %>
+        </td>
+        <td>
+          <%= link_to admins_orders_path,class: "nav-item nav-link" do %>依頼一覧<% end %>
+        </td>
+        <td>
+          <%= link_to destroy_admin_session_path, method: :delete,class: "nav-item nav-link"  do %>ログアウト<% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

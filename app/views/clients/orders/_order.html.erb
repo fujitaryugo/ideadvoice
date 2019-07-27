@@ -1,25 +1,33 @@
 <div class="row">
 	<% @orders.each do |order| %>
-	<div class="col-12 col-xl-6" style="margin:1% 0;">
-		<div class="card" >
-			<div class="card-header bg-info">
-				<%= link_to clients_order_path(order.id) , :style=>"color:white;" do %>
-				<%= order.order_title %>
-				<% end %>
+		<div class="col-12 col-lg-6">
+		<div class="card" style="margin:1% auto; border-color:#fd9900;">
+			<div class="card-header" style="background-color: #fed9a0; border-color:#fd9900;">
+				<%= attachment_image_tag order.client, :client_image, :fill,40,40, fallback:"client_no_image.jpeg",size: "40x40",style:"border-radius: 50%;" %>
+				<%= order.client.group_name %>
 			</div>
-			<div class="card-body">
-				<div class="d-inline-block text-truncate" style="max-width: 500px;"><%= order.order_text %></div>
-			</div>
-			<div class="card-body ">
-				<label >締め切り日</label>
-				<%= order.deadline.strftime('%Y年%m月%d日') %>
-			</div>
-			<div class="card-footer text-muted small">
-				<div class="row">
-					<div class="col-5 offset-7"></div>
+			<div class="card-body text-center" >
+				<h4 class="card-title" style="color:  #2d566b;">
+					<%= link_to order_path(order.id) ,:style=>"color: #2d566b;" do %>
+					<%= order.order_title %>
+					<% end %>
+				</h4>
+				<div class="under-title"></div>
+				<strong style="margin:2% 0;">募集締切<%= order.deadline.strftime('%Y年%m月%d日') %></strong>
+				<div class="under-title"></div>
+				<div class="text-center text-truncate ">
+					<span class="under-title ">お礼の品</span>
+						<%= simple_format(order.reward_content) %>
+				</div>
+				<div class="text-right text-muted small font-italic">
+					<span>投稿日</span>
+						<%= order.created_at.strftime('%Y年%m月%d日') %>
 				</div>
 			</div>
+			<div class="card-footer text-muted small text-right">
+				<span>アイデア<%= order.ideas.count %>件</span>
+			</div>
+	    </div>
 		</div>
-	</div>
 	<% end %>
 </div>

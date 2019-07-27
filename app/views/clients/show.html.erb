@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<div class="row" style="margin-bottom:5%;">
+	<div class="row space" style="margin-bottom:5%;">
 		<div class="col-2 col-md-1">
 		<%= attachment_image_tag @client, :client_image, :fill,100,100, fallback:"client_no_image_big.jpeg", size:'100x100',style:"border-radius: 50%;" %>
 		</div>
@@ -8,7 +8,7 @@
 			<div class= "font-weight-bold" style="margin-left:2%;"><%= @client.group_name %></div>
 			<div style="margin-left:2%;">
 			<p><%= @client.introduction %></p>
-			<a href='<%= @client.client_url %>' target="_blank"  class="text-info"><%= @client.client_url %></a>
+			<a href='<%= @client.client_url %>' target="_blank"><%= @client.client_url %></a>
 			</div>
 		</div>
 	</div>
@@ -41,9 +41,13 @@
 				</div>
 			</div>
 			<div class="card-footer clearfix text-muted small text-right">
+			<% if order.deadline >= Date.today %>
 				<%= link_to order_path(order.id) ,:style=>"text-decoration: none;" do %>
 				<i class="fas fa-pencil-alt" style="color:#30c5bb;">投稿する!</i>
 				<% end %>
+			<% else %>
+				<span>募集は終了しました！</span>
+			<% end %>
 				<span class="float-left">アイデア<%= order.ideas.count %>件</span>
 			</div>
 	    </div>

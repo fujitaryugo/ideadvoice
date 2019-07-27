@@ -1,0 +1,65 @@
+<div class="container">
+<div class="card" style="margin:1% auto;">
+	<div class="card-header">
+		<%= attachment_image_tag @order.client, :client_image, :fill,40,40, fallback:"client_no_image.jpeg",size: "40x40",style:"border-radius: 50%;" %>
+		<%= @order.client.group_name %>
+	</div>
+	<div class="card-body text-center">
+		<h3 class="card-title" ><%= @order.order_title %></h3>
+		<div class="under"></div>
+		<div class="card-text" style="margin:2% 0;">
+			<%= simple_format(@order.order_text) %>
+		</div>
+		<div class="under"></div>
+		<strong style="margin:2% 0;">募集締切<%= @order.deadline.strftime('%Y年%m月%d日') %></strong>
+		<div class="under"></div>
+	</div>
+
+	<div class="container-fluid">
+	<div class="card-body row">
+		<div class="col-6 text-center">
+			<%= attachment_image_tag @order, :order_image, :fill,200,200, fallback:"no_image.jpeg", size:'200x200' %>
+		</div>
+		<div class="col-6 text-center" style="border-left: solid 2px #dcdcdc">
+			<strong class="under">お礼の品</strong>
+			<div class="">
+				<%= simple_format(@order.reward_content) %>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="card-footer">
+		<%= link_to admins_order_path(@order),method: :delete,  class: "btn btn-outline-danger col", "data-confirm" => "本当に消しますか？" do %>削除<% end %>
+	</div>
+</div>
+<h2>アイデア一覧</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th>投稿者</th>
+      <th>コメント</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+  <% @ideas.each do |idea| %>
+  <tbody>
+    <tr>
+      <td><%= idea.id %></td>
+      <td>
+      	<%= link_to admins_order_idea_path(@order,idea) do %>
+      	<%= idea.idea_title %>
+      	<% end %>
+      </td>
+      <td><%= idea.idea_text %></td>
+      <td><%= idea.user.name %></td>
+      <td>コメント<%= idea.comments.count %>件</td>
+      <td><%= link_to admins_order_idea_path(@order,idea),method: :delete,  class: "btn btn-outline-danger", "data-confirm" => "本当に消しますか？" do %>削除<% end %>
+			</td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+</div>
