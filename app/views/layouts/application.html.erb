@@ -80,17 +80,22 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
         <%= link_to root_path,class: "nav-item nav-link active", :style=>"color:#2d566b;" do %>
-        <i class="fas fa-home">ホーム</i><% end %>
+        <i class="fas fa-home"></i>ホーム<% end %>
         <%= link_to orders_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
-        <i class="fas fa-rocket">依頼一覧</i><% end %>
+        <i class="fas fa-rocket"></i>依頼一覧<% end %>
         <%= link_to new_user_session_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
-        <i class="fa fa-user">ユーザーログイン</i><% end %>
+        <i class="fa fa-user"></i>ログイン<% end %>
         <%= link_to new_user_registration_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
-        <i class="fa fa-user">ユーザー新規登録</i><% end %>
-        <%= link_to new_client_session_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
-        <i class="fa fa-user">依頼者ログイン</i><% end %>
-        <%= link_to new_client_registration_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
-        <i class="fa fa-user">依頼者新規登録</i><% end %>
+        <i class="fa fa-user"></i>新規登録<% end %>
+        <div class="dropright">
+          <a class="btn t dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fab fa-grav">アイデアを募集したい方はこちら</i></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to new_client_session_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+            <i class="fab fa-grav">依頼者ログイン</i><% end %>
+            <%= link_to new_client_registration_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+            <i class="fab fa-grav">依頼者新規登録</i><% end %>
+          </div>
+        </div>
         </div>
       </div>
     </nav>

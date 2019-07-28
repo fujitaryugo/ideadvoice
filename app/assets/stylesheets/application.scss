@@ -37,20 +37,22 @@
 }
 
 .top-1{
+	text-align: center;
+	line-height: 300px;
   background-image: url("order.jpg");
-  height: 400px;
+  height: 300px;
   background-size: center;
   background-position:center;
 }
 .top-2{
-  background-image: url("back2.jpg");
-  height: 400px;
+  background-image: url("nawa.jpg");
+  height: 300px;
   background-size: cover;
-  background-position:bottom;
+  background-position:center;
 }
 .top-3{
   background-image: url("ki.jpg");
-  height: 400px;
+  height: 300px;
   background-size: cover;
 }
 
@@ -125,4 +127,22 @@ background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE0
 /*user薄い青背景*/
 .u2{
 	background-color: #aeefdd;
+}
+.g {
+	color:  gold;
+}
+.m5{
+	margin:5% auto;
+}
+.p5 {
+	padding: 5% auto;
+}
+.pt5{
+	padding-top:5%;
+}
+.tac {
+	text-align: center;
+}
+.lh{
+	line-height: 90px;
 }

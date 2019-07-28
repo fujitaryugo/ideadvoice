@@ -1,4 +1,5 @@
 class Admins::IdeasController < ApplicationController
+	before_action :authenticate_admin!
   def show
   	@order = Order.find(params[:order_id])
   	@idea = Idea.find(params[:id])

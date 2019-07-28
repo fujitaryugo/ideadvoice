@@ -1,4 +1,5 @@
 class Admins::CommentsController < ApplicationController
+	before_action :authenticate_admin!
   def destroy
 	@idea = Idea.find(params[:idea_id])
 	@comment = Comment.find(params[:id])
