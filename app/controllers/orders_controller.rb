@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
 	def index
 		@orders = Order.all.reverse_order
+
+		@orders_now = Order.where("deadline >= ? ", Date.today).reverse_order
 	end
 
 	def show

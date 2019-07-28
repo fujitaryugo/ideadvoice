@@ -1,49 +1,64 @@
+<div class="container-fuled u2 text-center" style="padding-bottom: 5%;">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <!-- インジケータの設定 -->
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" style="background-color:#2d566b;"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1" style="background-color:#2d566b;"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2" style="background-color:#2d566b;"></li>
   </ol>
   <!-- スライドさせる画像の設定 -->
-  <div class="carousel-inner" style="height:100px;">
-    <div class="carousel-item active">
-    	<h1 class="text-success text-center">ようこそ</h1>
+  <div class="carousel-inner">
+    <div class="carousel-item active top-1">
+      <span class="h1 t">Adovoiceへようこそ！</span>
+      <span>あなたのアイデアを聞かせてください</span>
     </div><!-- /.carousel-item -->
-    <div class="carousel-item">
-        <h1 class="text-success text-center">Home#top</h1>
+    <div class="carousel-item top-2">
+<!--       <img src="<%= asset_path "back2.jpg" %>" alt="responsive image" class="d-block img-fluid"> -->
     </div><!-- /.carousel-item -->
-    <div class="carousel-item">
-    	<h1 class="text-success text-center">ああああ</h1>
+    <div class="carousel-item top-3">
+<!--     	<img src="<%= asset_path "sibuya.jpg" %>" alt="responsive image" class="d-block img-fluid"> -->
     </div><!-- /.carousel-item -->
   </div><!-- /.carousel-inner -->
   <!-- スライドコントロールの設定 -->
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <h1 class="text-danger"><i class="fas fa-angle-double-left"></i></h1>
+    <h1 style="color:#2d566b;"><i class="fas fa-angle-double-left"></i></h1>
   </a>
   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <h1 class="text-danger"><i class="fas fa-angle-double-right"></i></h1>
+    <h1  style="color:#2d566b;"><i class="fas fa-angle-double-right"></i></h1>
   </a>
 </div><!-- /.carousel -->
 
+<div class="m5"><span class="h1 col-12 t">Adovoicの使い方</span></div>
 
-
-
-
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
-<h1>アプリの説明入れる</h1>
-<div>
-	<%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %><br>
-	<%= link_to "依頼者ログアウト", destroy_client_session_path, method: :delete %>
+  <div class="container box-1 t bg-white p5 border u1 " style="padding-bottom: 5%;">
+  <div class="row t text-center">
+    <span class="col-12"><i class="fas fa-angle-double-down fa-5x g "></i></span><br>
+    <div class="h2 col-4 text-right">Step1</div><div class=" h2 col-8 text-left ">
+      <span class="aligin-bottom">新規登録/ログインをしましょう</span>
+    </div>
+      <div class="col-12">初めてご利用の方はこちら<!-- <i class="fas fa-angle-right"></i> -->
+        <%= link_to new_user_registration_path, :style=>"color:#2d566b;" do %>
+        <i class="fa fa-user"></i><strong>新規登録</strong><% end %></div>
+      <div class="col-12">アカウントをお持ちの方はこちら<!-- <i class="fas fa-angle-right"></i> -->
+        <%= link_to new_user_session_path, :style=>"color:#2d566b;" do %>
+        <i class="fa fa-user"></i><strong>ログイン</strong><% end %>
+      </div>
+    <span class="col-12"><i class="fas fa-angle-double-down fa-5x g"></i></span><br>
+    <span class="h2 col-4 text-right">Step2</span><span class="h2 col-8 text-left">アイデアを募集してる依頼を探す！</span>
+    <div class="col-12">依頼一覧から答えたいものを選んだら
+      <i class="fas fa-pencil-alt" style="color:#30c5bb; background-color: white; ">投稿する！</i>から依頼の詳細画面へ！
+      <img src="<%= asset_path "about1.png" %>" alt="responsive image" class="d-block img-fluid">
+    </div>
+    <span class="col-12"><i class="fas fa-angle-double-down fa-5x g"></i></span><br>
+    <span class="h2 col-4 text-right">Step3</span><span class="h2 col-8 text-left">あなたのアイデアを投稿しましょう！</span>
+    <div class="col-12">タイトル・内容を書いたら投稿ボタンを押しましょう！</div>
+    <img src="<%= asset_path "about2.png" %>" alt="responsive image" class="d-block img-fluid">
+    <span class="col-12"><i class="fas fa-angle-double-down fa-5x g"></i></span><br>
+    <span class="col-12"><i class="fas fa-angle-double-down fa-5x g"></i></span><br>
+    <span class="h2 col-12">あなたの投稿が依頼主に選ばれるかも？</span>
+    <div class="col-12">あなたのアイデアが依頼主に選ばれたら<br><span class="h4">依頼にあるお礼の品をプレセント！</span>登録したメールアドレスに連絡が届きます！*<br>
+      *<span class="small" style="color: black;">送信元は本アプリのアドレスで送信専用のため、返信は記載されている依頼主のメールアドレスにお願いします。</span>
+    </div>
+  </div>
+  </div>
 </div>
-<div>
-	<%= link_to " ユーザーログイン", new_user_session_path %><br>
-	<%= link_to " 依頼者ログイン", new_client_session_path %>
-</div>
-<input type="date">
-<h1>Ajax#index</h1>
-<p id="hoge">真っ赤だな</p>
-<script>
-  $("#hoge").css("color","red")
-</script>

@@ -1,13 +1,13 @@
-<div class="container">
-	<div class="row" style="margin-bottom:5%;">
-		<div class="col-11 col-offset-1  col-lg-2 ">
+<div class="container-fluid">
+	<div class="row space" style="margin-bottom:5%;">
+		<div class="col-2">
 			<%= attachment_image_tag @user, :user_image, :size => "100x100", fallback:"user_no_image_big.jpeg",style:"border-radius: 50%;"   %>
 		</div>
 		<div class="col row">
 			<div class= "font-weight-bold col-9" style="margin-left:2%;"><%= @user.name %></div>
 			<div class="col-1">
 				<% if @user == current_user %>
-				<button type="button" class="btn" data-backdrop="static" data-toggle="modal" data-target="#myModal" style="border-color:#2d566b; color:#2d566b;">
+				<button type="button" class="btn t" data-backdrop="static" data-toggle="modal" data-target="#myModal" style="border-color:#2d566b;">
 					<i class="fas fa-cogs"></i>
 				</button>
 				<% end %>
@@ -21,8 +21,8 @@
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h5 class="modal-title" id="exampleModalLabel">ユーザー情報編集</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-			          <span aria-hidden="true" style="color:#2d566b;">&times;</span>
+			        <button type="button" class="close t" data-dismiss="modal" aria-label="閉じる">
+			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
 			      <div class="modal-body col">
@@ -68,13 +68,13 @@
 	<div class="">
 		<ul id="myTab" class="nav nav-tabs" role="tablist">
 		  <li class="nav-item">
-		    <a href="#home" id="home-tab" class="nav-link active" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true" style="color: #2d566b;">投稿</a>
+		    <a href="#home" id="home-tab" class="nav-link active t" role="tab" data-toggle="tab" aria-controls="home" aria-selected="true">投稿</a>
 		  </li>
 		  <li class="nav-item">
-		    <a href="#profile" id="profile-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false" style="color: #2d566b;">いいね</a>
+		    <a href="#profile" id="profile-tab" class="nav-link t" role="tab" data-toggle="tab" aria-controls="profile" aria-selected="false">いいね</a>
 		  </li>
 		  <li class="nav-item">
-		    <a href="#contact" id="contact-tab" class="nav-link" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false" style="color: #2d566b;">MVP</a>
+		    <a href="#contact" id="contact-tab" class="nav-link t" role="tab" data-toggle="tab" aria-controls="contact" aria-selected="false">MVP</a>
 		  </li>
 		</ul>
 
@@ -84,10 +84,10 @@
 			<div class="row ">
 				<div class="col-12 text-center text-muted small"><p><%= @ideas.count %>投稿</p></div>
 				<% @ideas.each do |idea| %>
-				<div class="col-12" style="margin:1% 0;">
-					<div class="card" style="border-color: #30c5bb;" >
-						<div class="card-header"style="background-color: #aeefdd; border-color: #30c5bb;" >
-							<div style="color:  #2d566b ;">
+				<div class="col-12 col-lg-4" style="margin:1% 0;">
+					<div class="card u1">
+						<div class="card-header u1 u2" >
+							<div class="t">
 							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
 							<%= idea.user.name %>
 							</div>
@@ -97,8 +97,9 @@
 								<%= link_to order_idea_path(idea.order_id,idea),:style=>"color:  #2d566b ; text-decoration: none;" do %>
 								<%= idea.idea_title %>
 								<% end %>
+							<div class="under-title2"></div>
 							</h3>
-							<div class="card-text text-center" style="margin-bottom:2%;"><%= simple_format(idea.idea_text) %></div>
+							<div class="card-text text-center" style="margin:2%;"><%= simple_format(idea.idea_text) %></div>
 							<div class="text-right font-italic text-muted small ">
 								<label>投稿日</label>
 								<%= idea.created_at.strftime('%Y年%m月%d日') %>
@@ -118,8 +119,8 @@
 		  		<div class="col-12 text-center text-muted small"><p><%= @favorites.count %>いいね</p></div>
 		  		<% @favorites.each do |fav| %>
 		  		<div class="col-12" style="margin:1% 0;">
-					<div class="card" style="border-color: #30c5bb;" >
-						<div class="card-header"style="background-color: #aeefdd; border-color: #30c5bb;" >
+					<div class="card u1" >
+						<div class="card-header u1 u2">
 							<%= link_to user_path(fav.idea.user_id),:style=>"color:  #2d566b ; text-decoration: none;" do %>
 							<%= attachment_image_tag fav.idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
 							<%= fav.idea.user.name %>
@@ -129,7 +130,8 @@
 							<h3 class="card-title text-center">
 							<%= link_to order_idea_path(fav.idea.order_id,fav.idea),:style=>"color:  #2d566b ; text-decoration: none;" do %><%= fav.idea.idea_title %><% end %>
 							</h3>
-							<div class="card-text text-center" style="margin-bottom:2%;"><%= simple_format(fav.idea.idea_text) %></div>
+							<div class="under-title2"></div>
+							<div class="card-text text-center" style="margin:2%;"><%= simple_format(fav.idea.idea_text) %></div>
 							<div class="text-right font-italic text-muted small" >
 								<label>投稿日</label>
 								<%= fav.idea.created_at.strftime('%Y年%m月%d日') %>
@@ -155,17 +157,18 @@
 					<% end %>
 		  			</div>
 
-					<div class="card" style="border-color: #30c5bb;" >
-						<div class="card-header clearfix" style="background-color: #aeefdd; border-color: #30c5bb;" >
+					<div class="card u1" >
+						<div class="card-header clearfix u1 u2">
 							<%= attachment_image_tag award.idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
 							<%= award.idea.user.name %>
-							<span class="float-right" style=" color:#ffe000; "><i class="fas fa-award fa-3x"></i></span>
+							<span class="float-right t"><i class="fas fa-award fa-3x"></i></span>
 						</div>
 						<div class="card-body">
 							<h3 class="card-title text-center">
 							<%= link_to order_idea_path(award.idea.order_id,award.idea),:style=>"color:  #2d566b ; text-decoration: none;" do %><%= award.idea.idea_title %><% end %>
 							</h3>
-							<div class="card-text text-center" style="margin-bottom:2%;"><%= simple_format(award.idea.idea_text) %></div>
+							<div class="under-title2"></div>
+							<div class="card-text text-center" style="margin:2%;"><%= simple_format(award.idea.idea_text) %></div>
 							<div class="text-right font-italic text-muted small" >
 								<label>投稿日</label>
 								<%= award.idea.created_at.strftime('%Y年%m月%d日') %>

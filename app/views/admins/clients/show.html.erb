@@ -1,0 +1,56 @@
+<div class="container">
+<h1><%= @client.group_name %></h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>団体名</th>
+      <th>担当者 姓</th>
+      <th>担当者 名</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @client.id %></td>
+      <td><%= @client.group_name %></td>
+      <td><%= @client.first_name %></td>
+      <td><%= @client.last_name %></td>
+      <td><%= @client.phone_number %></td>
+      <td><%= @client.email %></td>
+      <td><a href='<%= @client.client_url %>' target="_blank"><%= @client.client_url %></a></td>
+    </tr>
+  </tbody>
+</table>
+<div class="container" style="margin-bottom:5%;">
+  <h4 class="strong">紹介文</h4>
+  <div><%= @client.introduction %></div>
+</div>
+<div class="container">
+<h1>依頼一覧</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>画像</th>
+      <th>タイトル</th>
+      <th>お礼</th>
+      <th>アイデア</th>
+    </tr>
+  </thead>
+  <% @orders.each do |order| %>
+  <tbody>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= attachment_image_tag order, :order_image, :fill,50,50, fallback:"no_image.jpeg", size:'50x50' %></td>
+      <td><%= link_to admins_order_path(order) do %><%= order.order_title %><% end %></td>
+      <td><%= order.reward_content %></td>
+      <td><%= order.ideas.count %>件</td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+</div>
+</div>

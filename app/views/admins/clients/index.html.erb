@@ -1,0 +1,33 @@
+<div class="container">
+<h1>依頼者一覧</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>画像</th>
+      <th>団体名</th>
+      <th>担当者 姓</th>
+      <th>担当者 名</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+    </tr>
+  </thead>
+  <% @clients.each do |client| %>
+  <tbody>
+    <tr>
+      <td><%= client.id %></td>
+      <td>
+			<%= attachment_image_tag client, :client_image, :fill,20,20, fallback:"client_no_image_big.jpeg", size:'20x20',style:"border-radius: 50%;" %>
+      </td>
+      <td><%= link_to admins_client_path(client) do %>
+      	<%= client.group_name %><% end %>
+      </td>
+      <td><%= client.first_name %></td>
+      <td><%= client.last_name %></td>
+      <td><%= client.phone_number %></td>
+      <td><%= client.email %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+</div>

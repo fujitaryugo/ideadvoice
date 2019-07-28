@@ -14,53 +14,113 @@
 
   <body>
     <header class="header-image">
-<h1 class="god">GODOFTRAIN</h1>
     <% if user_signed_in? %>
-      <ul class="nav container">
-      <li class="nav-item col"><%= link_to root_path, :style=>"color:#2d566b;" do %><i class="fas fa-home">ホーム</i><% end %></li>
-      <li class="nav-item col"><%= link_to orders_path, :style=>"color:#2d566b;" do %><i class="fas fa-rocket">依頼一覧</i><% end %></li>
-      <li class="nav-item col"><%= link_to user_path(current_user), :style=>"color:#2d566b;" do %>
-        <i class="fa fa-user">マイページ</i><% end %></li>
-      <li class="nav-item col"><%= link_to destroy_user_session_path, method: :delete , :style=>"color:#2d566b;" do %>
-        <i class="fas fa-running">ログアウト</i><% end %></li>
-      <li class="nav-item col">ユーザーログインしてる</li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h1 class="navbar-brand t">Adovoice</h1>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <%= link_to root_path,class: "nav-item nav-link active", :style=>"color:#2d566b;" do %>
+        <i class="fas fa-home">ホーム</i><% end %>
+        <%= link_to orders_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+        <i class="fas fa-rocket">依頼一覧</i><% end %>
+        <%= link_to user_path(current_user),class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+        <i class="fa fa-user"><%= current_user.name %></i><% end %>
+        <%= link_to destroy_user_session_path, method: :delete,class: "nav-item nav-link" , :style=>"color:#2d566b;" do %>
+        <i class="fas fa-running">ログアウト</i><% end %>
+        </div>
+      </div>
+    </nav>
     <% elsif client_signed_in? %>
-      <ul class="nav container">
-      <li class="nav-item col "><%= link_to root_path,:style=>"color:#2d566b;" do %><i class="fas fa-home">ホーム</i><% end %></li>
-      <li class="nav-item col">
-        <%= link_to clients_client_path(current_client), :style=>"color:#2d566b" do %><i class="fas fa-user-tie">マイページ</i><% end %></li>
-      <li class="nav-item col"><%= link_to destroy_client_session_path, method: :delete, :style=>"color:#2d566b" do %><i class="fa fa-running">ログアウト</i><% end %></li>
-      <li class="nav-item">クライアントログインしてる</li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h1 class="navbar-brand t">Adovoice</h1>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <%= link_to root_path,class: "nav-item nav-link active", :style=>"color:#2d566b;" do %>
+        <i class="fas fa-home">ホーム</i><% end %>
+        <%= link_to clients_client_path(current_client), class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+        <i class="fa fa-user"><%= current_client.group_name %></i><% end %>
+        <%= link_to destroy_client_session_path,  method: :delete,class: "nav-item nav-link" , :style=>"color:#2d566b;" do %>
+        <i class="fas fa-running">ログアウト</i><% end %>
+        </div>
+      </div>
+    </nav>
     <% elsif admin_signed_in? %>
-      <ul class="nav container">
-      <li class="nav-item col"><%= link_to root_path do %>ホーム<% end %></li>
-      <li class="nav-item col"><%= link_to orders_path do %>依頼一覧<% end %></li>
-      <li class="nav-item col">マイページ</li>
-      <li class="nav-item col"><i class="fa fa-running"></i>ログアウト</li>
-      <li class="nav-item">アドミン</li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h1 class="navbar-brand t">Adovoice</h1>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <%= link_to admins_path,class: "nav-item nav-link active", :style=>"color:#2d566b;" do %>
+        <i class="fas fa-home">管理者昨日一覧</i><% end %>
+        <%= link_to admins_clients_path,class: "nav-item nav-link active", :style=>"color:#2d566b;" do %>
+        <i class="fas fa-home">依頼者一覧</i><% end %>
+        <%= link_to admins_users_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+        <i class="fas fa-home">ユーザー一覧</i><% end %>
+        <%= link_to admins_orders_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+        <i class="fas fa-home">依頼一覧</i><% end %>
+        <%= link_to destroy_admin_session_path, method: :delete,class: "nav-item nav-link" , :style=>"color:#2d566b;" do %>
+        <i class="fas fa-running">ログアウト</i><% end %>
+        </div>
+      </div>
+    </nav>
     <% else %>
-      <ul class="nav nav-bar container">
-      <li class="nav-item col"><%= link_to root_path do %><i class="fas fa-home">ホーム</i><% end %></li>
-      <li class="nav-item col"><%= link_to orders_path do %><i class="fas fa-rocket">依頼一覧</i><% end %></li>
-      <li class="nav-item col">
-        <span class="text-muted small">アカウントをお持ちの方</span><br>
-        <%= link_to new_user_session_path do %><i class="fas fa-sign-in-alt">ログイン</i><% end %>
-      </li>
-      <li class="nav-item col"><%= link_to new_user_registration_path do %><i class="fas fa-key">新規登録</i><% end %></li>
-      <li class="nav-item col">
-        <span class="text-muted small">アカウントをお持ちの方</span><br>
-        <%= link_to new_client_session_path do %><i class="fas fa-sign-in-alt">ログイン</i><% end %>
-      </li>
-      <li class="nav-item col"><%= link_to new_client_registration_path do %><i class="fas fa-key">新規登録</i><% end %></li>
-
-      <li class="nav-item col">誰もログインしてない</li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h1 class="navbar-brand t">Adovoice</h1>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <%= link_to root_path,class: "nav-item nav-link active", :style=>"color:#2d566b;" do %>
+        <i class="fas fa-home"></i>ホーム<% end %>
+        <%= link_to orders_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+        <i class="fas fa-rocket"></i>依頼一覧<% end %>
+        <%= link_to new_user_session_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+        <i class="fa fa-user"></i>ログイン<% end %>
+        <%= link_to new_user_registration_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+        <i class="fa fa-user"></i>新規登録<% end %>
+        <div class="dropright">
+          <a class="btn t dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fab fa-grav">アイデアを募集したい方はこちら</i></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to new_client_session_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+            <i class="fab fa-grav">依頼者ログイン</i><% end %>
+            <%= link_to new_client_registration_path,class: "nav-item nav-link", :style=>"color:#2d566b;" do %>
+            <i class="fab fa-grav">依頼者新規登録</i><% end %>
+          </div>
+        </div>
+        </div>
+      </div>
+    </nav>
     <% end %>
+    <div class="bottomline"></div>
 </header>
-<div class="bottomline"></div>
+
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">close</span>
+      </button>
+      <%= notice %>
+    </div>
+    <% end %>
+    <% if alert %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">close</span>
+      </button>
+      <%= alert %>
+    </div>
+    <% end %>
     <div class="backimage">
       <div class="box">
         <%= yield %>
@@ -68,8 +128,3 @@
     </div>
   </body>
 </html>
-    <script>
-      $(function(){
-          $("#snow").snowfall();
-      })
-    </script>

@@ -1,0 +1,25 @@
+<div class="container">
+<h1>ユーザー一覧</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>画像</th>
+      <th>ユーザーネーム</th>
+      <th>メールアドレス</th>
+    </tr>
+  </thead>
+  <% @users.each do |user| %>
+  <tbody>
+    <tr>
+      <td><%= user.id %></td>
+      <td>
+		<%= attachment_image_tag user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
+      </td>
+      <td><%= link_to admins_user_path(user) do %><%= user.name %><% end %></td>
+      <td><%= user.email %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+</div>

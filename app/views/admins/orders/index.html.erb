@@ -1,0 +1,31 @@
+<div class="container">
+<h1>依頼一覧</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>画像</th>
+      <th>タイトル</th>
+      <th>お礼</th>
+      <th>アイデア</th>
+    </tr>
+  </thead>
+  <% @orders.each do |order| %>
+  <tbody>
+    <tr>
+    	<td><%= order.id %></td>
+      <td>
+      	<%= attachment_image_tag order, :order_image, :fill,50,50, fallback:"no_image.jpeg", size:'50x50' %>
+      </td>
+    	<td>
+    		<%= link_to admins_order_path(order) do %>
+    		<%= order.order_title %>
+    		<% end %>
+    	</td>
+      <td><%= order.reward_content %></td>
+      <td>アイデア<%= order.ideas.count %>件</td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+</div>

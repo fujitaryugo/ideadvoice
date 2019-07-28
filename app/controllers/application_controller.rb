@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   	 user_path(current_user)
   	when Client
   	 clients_client_path(current_client)
+    when Admin
+     admins_path
   	end
   end
 
@@ -17,7 +19,7 @@ class ApplicationController < ActionController::Base
   	    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :sex, :age, :location, :job])
   	elsif params['controller'] == 'clients/registrations'
   	    devise_parameter_sanitizer.permit(:sign_up, keys: [:group_name, :last_name, :first_name, :phone_number, :client_url, :introduction])
-  	end
+    end
   end
 
 end

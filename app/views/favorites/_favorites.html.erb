@@ -1,13 +1,15 @@
 <% if @idea.favorited_by?(current_user) %>
   <div class="">
-    <%= link_to order_idea_favorites_path(@order,@idea),method: :delete, remote: true do %>
-      <i class="fa fa-heart fa-2x " aria-hidden="true" style="color: #ff3838;"></i>
+    <%= link_to order_idea_favorites_path(@order,@idea),method: :delete, remote: true ,:style=>"text-decoration: none;" do %>
+      <i class="fa fa-heart" aria-hidden="true" style="color: #ff3838;"></i>
     <% end %>
+    <%= @idea.favorites.count %>いいね
   </div>
 <% else %>
   <div>
     <%= link_to order_idea_favorites_path(@order,@idea),:style=>"color:#777;text-decoration: none;", method: :post, remote: true do %>
-      <i class="fa fa-heart fa-2x " aria-hidden="true"></i>
+      <i class="fa fa-heart" aria-hidden="true"></i>
     <% end %>
+    <%= @idea.favorites.count %>いいね
   </div>
 <% end %>

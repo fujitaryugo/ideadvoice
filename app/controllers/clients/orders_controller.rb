@@ -3,8 +3,13 @@ class Clients::OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.client_id = current_client.id
-		@order.save
+		if @order.save
+		flash[:notice] = "投稿しました！"
 		redirect_to clients_client_path(params[:client_id])
+		else
+		flash[:alert] = "投稿に失敗しました!"
+		redirect_to clients_client_path(params[:client_id])
+		end
 	end
 
 	def show

@@ -5,8 +5,13 @@ class IdeasController < ApplicationController
 		@idea = Idea.new(idea_params)
 		@idea.user_id = current_user.id
 		@idea.order_id = @order.id
-		@idea.save
+		if @idea.save
+		flash[:notice] = "投稿しました！"
 		redirect_to order_path(@order)
+		else
+		flash[:alert] = "投稿に失敗しました！正しく入力してください"
+		redirect_to order_path(@order)
+		end
 	end
 
 	def show

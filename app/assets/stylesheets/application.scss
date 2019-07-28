@@ -17,6 +17,45 @@
  @import "font-awesome";
  @import "tempusdominus-bootstrap-4.css";
 
+.carousel-item .img-fluid {
+  width:100%;
+  height:auto;
+}
+
+.carousel-item{
+  height: auto;
+}
+
+.carousel-item a {
+  display: block;
+  width:100%;
+}
+
+.carousel-item .show-image {
+  display: block;
+  width:100%;
+}
+
+.top-1{
+	text-align: center;
+	line-height: 300px;
+  background-image: url("order.jpg");
+  height: 300px;
+  background-size: center;
+  background-position:center;
+}
+.top-2{
+  background-image: url("nawa.jpg");
+  height: 300px;
+  background-size: cover;
+  background-position:center;
+}
+.top-3{
+  background-image: url("ki.jpg");
+  height: 300px;
+  background-size: cover;
+}
+
 .p{
 	color: #2d566b;
 }
@@ -33,15 +72,17 @@
 }
 header{
 	background-color: white;
-	padding-bottom: 2%;
 }
 .bottomline{
 	height: 1px;
 	background-color:#dcdcdc;
 }
-.box{
+/*.box{
 	background-color: #f9fbfe;
 	padding: 3% 0;
+}*/
+.space{
+	margin-top:3%;
 }
 .under {
 	height: 3px;
@@ -74,4 +115,34 @@ background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE0
 .btn-pro {
 	color:#2d566b;
 	background-color: #2d566b;
+}
+/*文字紺色*/
+.t {
+	color: #2d566b;
+}
+/*user濃い青枠*/
+.u1 {
+	border-color: #30c5bb;
+}
+/*user薄い青背景*/
+.u2{
+	background-color: #aeefdd;
+}
+.g {
+	color:  gold;
+}
+.m5{
+	margin:5% auto;
+}
+.p5 {
+	padding: 5% auto;
+}
+.pt5{
+	padding-top:5%;
+}
+.tac {
+	text-align: center;
+}
+.lh{
+	line-height: 90px;
 }
