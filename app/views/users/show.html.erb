@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row space" style="margin-bottom:5%;">
 		<div class="col-2">
-			<%= attachment_image_tag @user, :user_image, :size => "100x100", fallback:"user_no_image_big.jpeg",style:"border-radius: 50%;"   %>
+			<%= attachment_image_tag @user, :user_image, :size => "100x100", fallback:"/images/user_no_image_big.jpeg",style:"border-radius: 50%;"   %>
 		</div>
 		<div class="col row">
 			<div class= "font-weight-bold col-9" style="margin-left:2%;"><%= @user.name %></div>
@@ -88,7 +88,7 @@
 					<div class="card u1">
 						<div class="card-header u1 u2" >
 							<div class="t">
-							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
+							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"/images/user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
 							<%= idea.user.name %>
 							</div>
 						</div>
@@ -122,7 +122,7 @@
 					<div class="card u1" >
 						<div class="card-header u1 u2">
 							<%= link_to user_path(fav.idea.user_id),:style=>"color:  #2d566b ; text-decoration: none;" do %>
-							<%= attachment_image_tag fav.idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
+							<%= attachment_image_tag fav.idea.user, :user_image, :fill,40,40, fallback:"/images/user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
 							<%= fav.idea.user.name %>
 							<% end %>
 						</div>
@@ -159,7 +159,7 @@
 
 					<div class="card u1" >
 						<div class="card-header clearfix u1 u2">
-							<%= attachment_image_tag award.idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
+							<%= attachment_image_tag award.idea.user, :user_image, :fill,40,40, fallback:"/images/user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
 							<%= award.idea.user.name %>
 							<span class="float-right t"><i class="fas fa-award fa-3x"></i></span>
 						</div>

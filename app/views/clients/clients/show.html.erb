@@ -1,7 +1,7 @@
 <div class="container-fluid space">
 	<div class="row" style="margin-bottom:2%;">
 		<div class="col-2">
-			<%= attachment_image_tag @client, :client_image, :fill,100,100, fallback:"client_no_image_big.jpeg", size:'100x100',style:"border-radius: 50%;" %>
+			<%= attachment_image_tag @client, :client_image, :fill,100,100, fallback:"/images/client_no_image_big.jpeg", size:'100x100',style:"border-radius: 50%;" %>
 		</div>
 		<div class="col-8">
 			<strong class="strong"><%= @client.group_name %></strong>

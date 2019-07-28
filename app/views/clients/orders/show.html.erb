@@ -3,7 +3,7 @@
 		<div class="col-xl-12">
 			<div class="card" style="margin:1% auto; border-color:#fd9900;">
 				<div class="card-header"  style="background-color: #fed9a0; border-color:#fd9900; color:  #2d566b;text-decoration: none;">
-					<%= attachment_image_tag @order.client, :client_image, :fill,40,40, fallback:"user_no_image.jpeg", size:'40x40',style:"border-radius: 50%;" %>
+					<%= attachment_image_tag @order.client, :client_image, :fill,40,40, fallback:"/images/user_no_image.jpeg", size:'40x40',style:"border-radius: 50%;" %>
 					<%= @order.client.group_name %>
 
 				</div>
@@ -18,7 +18,7 @@
 				<div class="container">
 				<div class="card-body row">
 					<div class="col-6 text-center">
-						<%= attachment_image_tag @order, :order_image, :fill,200,200, fallback:"no_image.jpeg", size:'200x200' %>
+						<%= attachment_image_tag @order, :order_image, :fill,200,200, fallback:"/images/no_image.jpeg", size:'200x200' %>
 					</div>
 					<div class="col-6 text-center" style="border-left: solid 2px #dcdcdc">
 						<strong class="under-title">お礼の品</strong>
@@ -116,7 +116,7 @@
 							<div class="row">
 							<div class="col-11" style="color:#2d566b;">
 
-							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg", size:'40x40',style:"border-radius: 50%;" %>
+							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"/images/user_no_image.jpeg", size:'40x40',style:"border-radius: 50%;" %>
 							<%= idea.user.name %>
 							</div>
 						<div id="award_buttons_<%= idea.id %>">
@@ -155,7 +155,7 @@
 			  	<div class="col-12" style="margin:1% 0;">
 					<div class="card" style="margin:1% auto;border-color: #30c5bb;" >
 						<div class="card-header clearfix" style="background-color: #aeefdd; border-color: #30c5bb; color:#2d566b;" >
-							<%= attachment_image_tag award.idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
+							<%= attachment_image_tag award.idea.user, :user_image, :fill,40,40, fallback:"/images/user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
 							<%= award.idea.user.name %>
 							<span class="float-right" style=" color:#ffe000; "><i class="fas fa-award fa-3x"></i></span>
 						</div>

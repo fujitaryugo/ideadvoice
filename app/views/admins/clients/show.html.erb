@@ -44,7 +44,7 @@
   <tbody>
     <tr>
       <td><%= order.id %></td>
-      <td><%= attachment_image_tag order, :order_image, :fill,50,50, fallback:"no_image.jpeg", size:'50x50' %></td>
+      <td><%= attachment_image_tag order, :order_image, :fill,50,50, fallback:"/images/no_image.jpeg", size:'50x50' %></td>
       <td><%= link_to admins_order_path(order) do %><%= order.order_title %><% end %></td>
       <td><%= order.reward_content %></td>
       <td><%= order.ideas.count %>件</td>
