@@ -17,7 +17,7 @@
     <tr>
       <td><%= client.id %></td>
       <td>
-			<%= attachment_image_tag client, :client_image, :fill,20,20, fallback:"client_no_image_big.jpeg", size:'20x20',style:"border-radius: 50%;" %>
+			<%= attachment_image_tag client, :client_image, :fill,20,20, fallback:"/images/client_no_image_big.jpeg", size:'20x20',style:"border-radius: 50%;" %>
       </td>
       <td><%= link_to admins_client_path(client) do %>
       	<%= client.group_name %><% end %>

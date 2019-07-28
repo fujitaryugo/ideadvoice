@@ -1,7 +1,7 @@
 <div class="container">
 <div class="card" style="margin:1% auto;">
 	<div class="card-header">
-		<%= attachment_image_tag @order.client, :client_image, :fill,40,40, fallback:"client_no_image.jpeg",size: "40x40",style:"border-radius: 50%;" %>
+		<%= attachment_image_tag @order.client, :client_image, :fill,40,40, fallback:"/images/client_no_image.jpeg",size: "40x40",style:"border-radius: 50%;" %>
 		<%= @order.client.group_name %>
 	</div>
 	<div class="card-body text-center">
@@ -18,7 +18,7 @@
 	<div class="container-fluid">
 	<div class="card-body row">
 		<div class="col-6 text-center">
-			<%= attachment_image_tag @order, :order_image, :fill,200,200, fallback:"no_image.jpeg", size:'200x200' %>
+			<%= attachment_image_tag @order, :order_image, :fill,200,200, fallback:"/images/no_image.jpeg", size:'200x200' %>
 		</div>
 		<div class="col-6 text-center" style="border-left: solid 2px #dcdcdc">
 			<strong class="under">お礼の品</strong>

@@ -14,7 +14,7 @@
     <tr>
       <td><%= user.id %></td>
       <td>
-		<%= attachment_image_tag user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
+		<%= attachment_image_tag user, :user_image, :fill,40,40, fallback:"/images/user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
       </td>
       <td><%= link_to admins_user_path(user) do %><%= user.name %><% end %></td>
       <td><%= user.email %></td>

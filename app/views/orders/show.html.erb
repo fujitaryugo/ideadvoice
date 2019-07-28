@@ -57,7 +57,7 @@
 				  	<%= form_for @idea, url:order_ideas_path(order_id: @order) do |f| %>
 				  	<div class="card-header" style="border-color:  #30c5bb; background-color:  #aeefdd;">
 				  	<% if user_signed_in? %>
-						<%= attachment_image_tag @user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",size: "40x40",style:"border-radius: 50%; color: white;" %>
+						<%= attachment_image_tag @user, :user_image, :fill,40,40, fallback:"/images/user_no_image.jpeg",size: "40x40",style:"border-radius: 50%; color: white;" %>
 						<%= @user.name %>
 					<% end %>
 				  	</div>
@@ -83,7 +83,7 @@
 					<div class="card " style="margin:1% auto;border-color: #30c5bb;">
 						<div class="card-header clearfix" style="background-color: #aeefdd; border-color: #30c5bb;">
 						<%= link_to order_idea_path(idea.order_id,idea),:style=>"color: #2d566b;text-decoration: none;" do %>
-							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",size: "40x40",style:"border-radius: 50%; color: white;" %>
+							<%= attachment_image_tag idea.user, :user_image, :fill,40,40, fallback:"/images/user_no_image.jpeg",size: "40x40",style:"border-radius: 50%; color: white;" %>
 							<%= idea.user.name %>
 
 						<% end %>
@@ -120,7 +120,7 @@
 			  	<div class="col-12" style="margin:1% 0;">
 					<div class="card" style="margin:1% auto;border-color: #30c5bb;" >
 						<div class="card-header clearfix" style="background-color: #aeefdd; border-color: #30c5bb; color:#2d566b;" >
-							<%= attachment_image_tag award.idea.user, :user_image, :fill,40,40, fallback:"user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
+							<%= attachment_image_tag award.idea.user, :user_image, :fill,40,40, fallback:"/images/user_no_image.jpeg",style:"border-radius: 50%;",size: "40x40" %>
 							<%= award.idea.user.name %>
 							<span class="float-right" style=" color:#ffe000; "><i class="fas fa-award fa-3x"></i></span>
 						</div>
