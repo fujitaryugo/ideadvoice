@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :clients do
+    get 'users/show'
+  end
   devise_for :users, controllers: {
   sessions:      'users/sessions',
   passwords:     'users/passwords',
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
   			resource :awards, only: [:create, :destroy]
   		end
   	end
+    resources :users, only: [:show]
 	end
 
   resources :users, only: [:show, :update]
